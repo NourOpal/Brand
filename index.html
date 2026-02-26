@@ -11,396 +11,398 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    --black: #000000;
     --white: #FFFFFF;
-    --secondary: #BCBBC0;
-    --surface: #141414;
-    --border: rgba(255,255,255,0.06);
-    --border-hover: rgba(255,255,255,0.18);
+    --secondary: #888;
+    --dim: #555;
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.2);
   }
 
   body {
-    background: #0a0a0a;
+    background: #000;
     color: var(--white);
-    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
   /* ── Nav ── */
   nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(10,10,10,0.82);
-    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     padding: 0 48px;
     display: flex; align-items: center; justify-content: space-between;
-    height: 56px;
+    height: 52px;
   }
-  .nav-logo { font-size: 17px; font-weight: 700; letter-spacing: -0.02em; }
+  .nav-logo img { height: 14px; width: auto; display: block; opacity: 0.7; }
   .nav-links { display: flex; gap: 28px; list-style: none; }
   .nav-links a {
-    color: var(--secondary); text-decoration: none;
-    font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+    color: var(--dim); text-decoration: none;
+    font-size: 12px; font-weight: 600;
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--white); }
 
   /* ── Sections ── */
   section {
-    padding: 96px 48px;
-    max-width: 1200px;
+    padding: 80px 48px;
+    max-width: 1100px;
     margin: 0 auto;
-    border-bottom: 1px solid var(--border);
+  }
+  .divider {
+    max-width: 1100px; margin: 0 auto;
+    height: 1px; background: var(--border);
+    margin-left: 48px; margin-right: 48px;
   }
   .section-label {
     font-size: 11px; font-weight: 600;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--secondary); margin-bottom: 12px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--dim); margin-bottom: 12px;
   }
   h2 {
-    font-size: 32px; font-weight: 700;
-    letter-spacing: -0.03em; margin-bottom: 16px;
+    font-size: 28px; font-weight: 700;
+    letter-spacing: -0.03em; margin-bottom: 12px;
   }
   .section-desc {
-    font-size: 15px; color: var(--secondary);
-    max-width: 560px; line-height: 1.7; margin-bottom: 48px;
+    font-size: 14px; color: var(--secondary);
+    max-width: 500px; line-height: 1.7; margin-bottom: 40px;
+  }
+  .sub-label {
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--dim); margin-bottom: 14px;
   }
 
   /* ── Hero ── */
-  #hero { padding-top: 120px; padding-bottom: 120px; }
-  .hero-badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 100px;
-    padding: 6px 16px;
-    font-size: 11px; font-weight: 600; color: var(--secondary);
-    letter-spacing: 0.04em;
-    margin-bottom: 32px;
+  #hero { padding-top: 100px; padding-bottom: 80px; }
+  .hero-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--dim); margin-bottom: 24px;
   }
   h1 {
-    font-size: clamp(42px, 6vw, 72px);
+    font-size: clamp(36px, 5vw, 56px);
     font-weight: 700;
     letter-spacing: -0.04em;
-    line-height: 1.0;
-    margin-bottom: 24px;
+    line-height: 1.05;
+    margin-bottom: 20px;
   }
   .gradient-text {
     background: linear-gradient(135deg, #fff 0%, #A9CBFF 50%, #E2C9FF 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .hero-pills { margin-top: 40px; display: flex; gap: 12px; flex-wrap: wrap; }
-  .hero-pill {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 100px;
-    padding: 7px 18px;
-    font-size: 12px; font-weight: 600; color: var(--secondary);
-  }
 
   /* ── Colors ── */
-  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; margin-bottom: 40px; }
-  .color-card { border-radius: 12px; overflow: hidden; background: var(--surface); border: 1px solid var(--border); }
-  .color-swatch { height: 88px; }
-  .color-info { padding: 12px 14px; }
-  .color-name { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
-  .color-hex { font-size: 11px; color: var(--secondary); font-family: 'SF Mono', SFMono-Regular, Menlo, monospace; }
-  .sub-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--secondary); margin-bottom: 16px; }
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin-bottom: 36px; }
+  .color-card { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+  .color-swatch { height: 80px; }
+  .color-info { padding: 10px 12px; }
+  .color-name { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
+  .color-hex { font-size: 10px; color: var(--dim); font-family: 'SF Mono', Menlo, monospace; }
 
-  /* ── Logo / Crest Cards ── */
-  .logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+  /* ── Typography ── */
+  .type-sample {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 10px;
+  }
+  .type-label {
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--dim);
+    margin-bottom: 14px; font-weight: 600;
+  }
+  .type-meta {
+    margin-top: 12px;
+    font-size: 10px; color: rgba(255,255,255,0.2);
+    font-family: 'SF Mono', Menlo, monospace;
+  }
+  .font-downloads { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 28px; }
+  .font-dl {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--secondary);
+    font-size: 11px; font-weight: 600;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .font-dl:hover { border-color: var(--border-hover); color: var(--white); }
+  .font-dl .meta { color: var(--dim); font-weight: 400; }
+
+  /* ── Logo Cards ── */
+  .logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
   .logo-card {
-    border-radius: 16px;
-    padding: 40px;
+    border-radius: 14px;
+    padding: 36px;
     display: flex; flex-direction: column;
     align-items: flex-start; justify-content: space-between;
     gap: 20px;
     border: 1px solid var(--border);
-    min-height: 200px;
-    position: relative;
+    min-height: 180px;
   }
   .logo-card.dark { background: #000; }
   .logo-card.light { background: #fff; }
-  .logo-img { height: 40px; width: auto; object-fit: contain; max-width: 200px; }
-  .crest-img { height: 80px; width: auto; object-fit: contain; }
+  .logo-img { height: 36px; width: auto; object-fit: contain; max-width: 180px; }
   .logo-card-footer { display: flex; align-items: center; justify-content: space-between; width: 100%; }
-  .logo-usage-label { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
-  .logo-card.dark .logo-usage-label { color: rgba(255,255,255,0.35); }
-  .logo-card.light .logo-usage-label { color: rgba(0,0,0,0.35); }
+  .logo-usage-label { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+  .logo-card.dark .logo-usage-label { color: rgba(255,255,255,0.25); }
+  .logo-card.light .logo-usage-label { color: rgba(0,0,0,0.25); }
 
-  /* ── Download button (inline on cards) ── */
+  /* ── Crest Cards ── */
+  .crest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+  .crest-card {
+    border-radius: 14px;
+    padding: 32px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: space-between;
+    gap: 16px;
+    border: 1px solid var(--border);
+  }
+  .crest-card.dark { background: #000; }
+  .crest-card.light { background: #fff; }
+  .crest-card .crest-img-wrap { display: flex; align-items: center; justify-content: center; padding: 16px 0; }
+  .crest-img { height: 72px; width: auto; object-fit: contain; }
+
+  /* ── DL button ── */
   .dl-btn {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 6px 14px;
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 5px 12px;
     border-radius: 100px;
-    font-size: 11px; font-weight: 600;
+    font-size: 10px; font-weight: 600;
     text-decoration: none;
     transition: all 0.2s;
-    letter-spacing: 0.02em;
-    flex-shrink: 0;
   }
   .dl-btn.on-dark {
-    background: rgba(255,255,255,0.08);
-    color: rgba(255,255,255,0.6);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.4);
+    border: 1px solid rgba(255,255,255,0.08);
   }
-  .dl-btn.on-dark:hover { background: rgba(255,255,255,0.15); color: #fff; }
+  .dl-btn.on-dark:hover { background: rgba(255,255,255,0.12); color: #fff; }
   .dl-btn.on-light {
-    background: rgba(0,0,0,0.06);
-    color: rgba(0,0,0,0.5);
-    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0,0,0,0.04);
+    color: rgba(0,0,0,0.35);
+    border: 1px solid rgba(0,0,0,0.08);
   }
-  .dl-btn.on-light:hover { background: rgba(0,0,0,0.12); color: #000; }
-  .dl-icon { font-size: 13px; line-height: 1; }
+  .dl-btn.on-light:hover { background: rgba(0,0,0,0.1); color: #000; }
 
-  /* ── Gem Grid ── */
-  .gems-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+  /* ── App Icon ── */
+  .app-icon-row {
+    display: flex; align-items: center; gap: 32px;
+  }
+  .app-icon-img {
+    width: 120px; height: 120px;
+    border-radius: 28px;
+    object-fit: cover; flex-shrink: 0;
+  }
+  .app-icon-details h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+  .app-icon-details p { font-size: 13px; color: var(--secondary); line-height: 1.6; margin-bottom: 12px; max-width: 380px; }
+
+  /* ── Hero Visuals (Gem Burst) ── */
+  .hero-assets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+  .hero-asset-card {
+    border-radius: 14px; overflow: hidden;
+    border: 1px solid var(--border);
+    position: relative;
+    aspect-ratio: 16/10;
+  }
+  .hero-asset-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-asset-card .card-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 14px 16px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    display: flex; align-items: center; justify-content: space-between;
+    opacity: 0; transition: opacity 0.2s;
+  }
+  .hero-asset-card:hover .card-overlay { opacity: 1; }
+  .card-overlay-label { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.6); }
+
+  /* ── Badge row ── */
+  .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
+  .badge-item {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 14px;
+    display: flex; align-items: center; gap: 8px;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .badge-item:hover { border-color: var(--border-hover); }
+  .badge-item img { height: 22px; width: auto; object-fit: contain; }
+  .badge-item span { font-size: 10px; font-weight: 600; color: var(--dim); }
+
+  /* ── Gems ── */
+  .gems-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
   .gem-card {
-    background: #000; border-radius: 16px; overflow: hidden;
+    background: #000; border-radius: 14px; overflow: hidden;
     border: 1px solid var(--border);
     aspect-ratio: 1;
     position: relative;
-    display: flex; align-items: center; justify-content: center;
   }
   .gem-card img { width: 100%; height: 100%; object-fit: cover; }
   .gem-card .card-overlay {
     position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 12px 14px;
+    padding: 10px 12px;
     background: linear-gradient(transparent, rgba(0,0,0,0.8));
     display: flex; align-items: center; justify-content: space-between;
-    opacity: 0; transition: opacity 0.25s;
+    opacity: 0; transition: opacity 0.2s;
   }
   .gem-card:hover .card-overlay { opacity: 1; }
-  .card-overlay-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.7); }
 
   /* ── Screenshots ── */
   .screenshots-row {
-    display: flex; gap: 12px; overflow-x: auto;
-    padding-bottom: 16px; margin-bottom: 24px;
+    display: flex; gap: 10px; overflow-x: auto;
+    padding-bottom: 12px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
   }
-  .screenshots-row::-webkit-scrollbar { height: 4px; }
+  .screenshots-row::-webkit-scrollbar { height: 3px; }
   .screenshots-row::-webkit-scrollbar-track { background: transparent; }
-  .screenshots-row::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+  .screenshots-row::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
   .screenshot-card {
-    flex-shrink: 0; width: 200px;
-    border-radius: 16px; overflow: hidden;
+    flex-shrink: 0; width: 180px;
+    border-radius: 14px; overflow: hidden;
     border: 1px solid var(--border);
-    background: var(--surface);
     scroll-snap-align: start;
     position: relative;
   }
-  .screenshot-card img {
-    width: 100%; height: 360px; object-fit: cover;
-    display: block;
-  }
+  .screenshot-card img { width: 100%; height: 340px; object-fit: cover; display: block; }
   .screenshot-card .card-overlay {
     position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 10px 12px;
+    padding: 8px 10px;
     background: linear-gradient(transparent, rgba(0,0,0,0.85));
     display: flex; align-items: center; justify-content: flex-end;
-    opacity: 0; transition: opacity 0.25s;
+    opacity: 0; transition: opacity 0.2s;
   }
   .screenshot-card:hover .card-overlay { opacity: 1; }
-
-  /* ── Asset Cards ── */
-  .assets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
-  .asset-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 16px; overflow: hidden;
-    transition: border-color 0.2s;
-  }
-  .asset-card:hover { border-color: var(--border-hover); }
-  .asset-preview {
-    height: 170px; display: flex; align-items: center; justify-content: center;
-    background: #000; padding: 24px;
-  }
-  .asset-preview img { max-height: 100%; max-width: 100%; object-fit: contain; }
-  .asset-info {
-    padding: 14px 18px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .asset-meta {}
-  .asset-name { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
-  .asset-desc { font-size: 11px; color: var(--secondary); }
-
-  /* ── Typography ── */
-  .type-sample {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 36px;
-    margin-bottom: 12px;
-  }
-  .type-label {
-    font-size: 11px; text-transform: uppercase;
-    letter-spacing: 0.1em; color: var(--secondary);
-    margin-bottom: 16px; font-weight: 600;
-  }
-  .type-meta {
-    margin-top: 14px;
-    font-size: 11px; color: rgba(255,255,255,0.3);
-    font-family: 'SF Mono', SFMono-Regular, Menlo, monospace;
-  }
-  .font-downloads {
-    display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px;
-  }
-  .font-dl {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 10px 18px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    text-decoration: none;
-    color: var(--white);
-    font-size: 12px; font-weight: 600;
-    transition: border-color 0.2s;
-  }
-  .font-dl:hover { border-color: var(--border-hover); }
-  .font-dl .meta { color: var(--secondary); font-weight: 400; }
 
   /* ── Rules ── */
   .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   .rules-col h3 {
-    font-size: 12px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.1em;
-    margin-bottom: 16px;
-    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 12px;
   }
   .rules-col.do h3 { color: #8CFFDD; }
   .rules-col.dont h3 { color: #FF6B6B; }
   .rule-item {
-    display: flex; align-items: flex-start; gap: 10px;
-    padding: 12px 0;
+    display: flex; align-items: flex-start; gap: 8px;
+    padding: 10px 0;
     border-bottom: 1px solid var(--border);
-    font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.5;
+    font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.5;
   }
-  .rule-icon { flex-shrink: 0; font-size: 12px; margin-top: 2px; }
+  .rule-icon { flex-shrink: 0; font-size: 11px; margin-top: 1px; }
   .do .rule-icon { color: #8CFFDD; }
   .dont .rule-icon { color: #FF6B6B; }
 
-  /* ── Download Hub ── */
+  /* ── Note Box ── */
+  .note-box {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 12px; color: var(--secondary);
+    line-height: 1.65;
+  }
+  .note-box strong { color: var(--white); }
+
+  /* ── Downloads ── */
   .download-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 10px; margin-top: 32px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px; margin-top: 24px;
   }
   .download-item {
-    background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px 20px;
+    border-radius: 10px;
+    padding: 14px 18px;
     display: flex; align-items: center; justify-content: space-between;
     text-decoration: none;
     transition: border-color 0.2s;
   }
   .download-item:hover { border-color: var(--border-hover); }
-  .download-label { font-size: 13px; font-weight: 600; color: var(--white); }
-  .download-type { font-size: 11px; color: var(--secondary); margin-top: 2px; }
-  .download-arrow { color: var(--secondary); font-size: 15px; }
-
-  /* ── Note Box ── */
-  .note-box {
-    background: rgba(162,203,255,0.05);
-    border: 1px solid rgba(162,203,255,0.12);
-    border-radius: 12px;
-    padding: 18px 22px;
-    font-size: 13px; color: rgba(255,255,255,0.55);
-    line-height: 1.65;
-  }
-  .note-box strong { color: var(--white); }
+  .download-label { font-size: 12px; font-weight: 600; color: var(--white); }
+  .download-type { font-size: 10px; color: var(--dim); margin-top: 1px; }
+  .download-arrow { color: var(--dim); font-size: 14px; }
 
   /* ── Contact ── */
   .contact-card {
-    background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 44px;
+    border-radius: 16px;
+    padding: 40px;
     display: flex; justify-content: space-between; align-items: center;
   }
   .contact-btn {
     background: white; color: black;
-    padding: 13px 26px; border-radius: 100px;
+    padding: 11px 24px; border-radius: 100px;
     text-decoration: none;
-    font-size: 13px; font-weight: 700;
-    white-space: nowrap; flex-shrink: 0; margin-left: 32px;
+    font-size: 12px; font-weight: 700;
+    flex-shrink: 0; margin-left: 32px;
     transition: opacity 0.2s;
   }
   .contact-btn:hover { opacity: 0.85; }
 
   footer {
-    text-align: center; padding: 48px;
-    font-size: 11px; color: rgba(255,255,255,0.18);
-    letter-spacing: 0.02em;
+    text-align: center; padding: 40px;
+    font-size: 10px; color: rgba(255,255,255,0.12);
   }
 
   /* ── Responsive ── */
   @media (max-width: 768px) {
-    section { padding: 64px 24px; }
+    section { padding: 56px 24px; }
     nav { padding: 0 24px; }
-    .logo-grid, .rules-grid { grid-template-columns: 1fr; }
+    .logo-grid, .crest-grid, .rules-grid, .hero-assets-grid { grid-template-columns: 1fr; }
     .gems-grid { grid-template-columns: repeat(2, 1fr); }
-    .assets-grid { grid-template-columns: 1fr 1fr; }
-    .contact-card { flex-direction: column; gap: 24px; text-align: center; }
+    .contact-card { flex-direction: column; gap: 20px; text-align: center; }
     .contact-btn { margin-left: 0; }
     .nav-links { display: none; }
-    .screenshot-card { width: 160px; }
-    .screenshot-card img { height: 280px; }
-  }
-  @media (max-width: 480px) {
-    .assets-grid { grid-template-columns: 1fr; }
-    .gems-grid { grid-template-columns: 1fr 1fr; }
+    .app-icon-row { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .screenshot-card { width: 150px; }
+    .screenshot-card img { height: 260px; }
   }
 </style>
 </head>
 <body>
 
-<!-- ════════════ NAV ════════════ -->
 <nav>
-  <div class="nav-logo">Opal</div>
+  <div class="nav-logo"><img src="Opal_White.png" alt="Opal"></div>
   <ul class="nav-links">
     <li><a href="#colors">Colors</a></li>
+    <li><a href="#typography">Type</a></li>
     <li><a href="#logos">Logos</a></li>
     <li><a href="#gems">Gems</a></li>
     <li><a href="#screenshots">Screenshots</a></li>
     <li><a href="#assets">Assets</a></li>
-    <li><a href="#typography">Type</a></li>
     <li><a href="#rules">Rules</a></li>
     <li><a href="#download">Download</a></li>
   </ul>
 </nav>
 
-<!-- ════════════ HERO ════════════ -->
 <section id="hero">
-  <div class="hero-badge">Partner Brand Kit</div>
-  <h1>Opal<br><span class="gradient-text">Brand Guidelines</span></h1>
-  <p style="font-size:17px;color:var(--secondary);max-width:540px;margin-top:24px;line-height:1.7;">Everything you need to represent Opal correctly. Please read all usage rules before placing any Opal assets on your landing page.</p>
-  <div class="hero-pills">
-    <div class="hero-pill">Apple Design Award — Social Impact 2025</div>
-    <div class="hero-pill">4.9 ★ · 100K+ Ratings</div>
-    <div class="hero-pill">opal.so</div>
-  </div>
+  <div class="hero-label">Partner Brand Kit</div>
+  <h1>Opal<br><span class="gradient-text">Brand Kit</span></h1>
+  <p style="font-size:15px;color:var(--secondary);max-width:480px;margin-top:20px;line-height:1.7;">Everything you need to represent Opal. Assets, guidelines, and usage rules — all in one place.</p>
 </section>
 
-<!-- ════════════ COLORS ════════════ -->
+<div class="divider"></div>
+
 <section id="colors">
   <div class="section-label">01 — Colors</div>
   <h2>Color System</h2>
-  <p class="section-desc">Opal's palette is built on pure black and white. Gradients are accent elements reserved for in-app milestone moments — they should never replace or dominate the core palette.</p>
+  <p class="section-desc">Built on pure black and white. Gradients are reserved for in-app milestone moments — never as backgrounds or dominant elements.</p>
 
   <div class="sub-label">Core Palette</div>
   <div class="color-grid">
     <div class="color-card"><div class="color-swatch" style="background:#000;"></div><div class="color-info"><div class="color-name">Background</div><div class="color-hex">#000000</div></div></div>
-    <div class="color-card"><div class="color-swatch" style="background:#FFF;border-bottom:1px solid var(--border);"></div><div class="color-info"><div class="color-name">Main Text</div><div class="color-hex">#FFFFFF</div></div></div>
-    <div class="color-card"><div class="color-swatch" style="background:linear-gradient(to bottom,#FFF,#BCBBC0);"></div><div class="color-info"><div class="color-name">Secondary Text</div><div class="color-hex">#BCBBC0</div></div></div>
+    <div class="color-card"><div class="color-swatch" style="background:#FFF;"></div><div class="color-info"><div class="color-name">Main Text</div><div class="color-hex">#FFFFFF</div></div></div>
+    <div class="color-card"><div class="color-swatch" style="background:#BCBBC0;"></div><div class="color-info"><div class="color-name">Secondary</div><div class="color-hex">#BCBBC0</div></div></div>
     <div class="color-card"><div class="color-swatch" style="background:#3a3a3a;"></div><div class="color-info"><div class="color-name">Surfaces</div><div class="color-hex">#3A3A3A</div></div></div>
   </div>
 
-  <div class="sub-label" style="margin-top:32px;">Gradient Accents — App Only</div>
+  <div class="sub-label" style="margin-top:28px;">Gradient Accents — App Only</div>
   <div class="color-grid">
     <div class="color-card"><div class="color-swatch" style="background:linear-gradient(135deg,#E2C9FF,#8CFFDD);"></div><div class="color-info"><div class="color-name">Gradient 01</div><div class="color-hex">#E2C9FF → #8CFFDD</div></div></div>
     <div class="color-card"><div class="color-swatch" style="background:linear-gradient(135deg,#A9CBFF,#B39AFF);"></div><div class="color-info"><div class="color-name">Gradient 02</div><div class="color-hex">#A9CBFF → #B39AFF</div></div></div>
@@ -408,301 +410,238 @@
   </div>
 </section>
 
-<!-- ════════════ LOGOS ════════════ -->
-<section id="logos">
-  <div class="section-label">02 — Logos</div>
-  <h2>Logo Usage</h2>
-  <p class="section-desc">Always use as provided. Never recreate, recolor, stretch, or apply effects. White on dark backgrounds, black on light backgrounds.</p>
+<div class="divider"></div>
 
-  <div class="sub-label">Wordmark</div>
-  <div class="logo-grid">
-    <div class="logo-card dark">
-      <img class="logo-img" src="Opal_White.png" alt="Opal White Logo">
-      <div class="logo-card-footer">
-        <div class="logo-usage-label">White logo — Dark backgrounds</div>
-        <a class="dl-btn on-dark" href="Opal_White.png" download><span class="dl-icon">↓</span> PNG</a>
-      </div>
-    </div>
-    <div class="logo-card light">
-      <img class="logo-img" src="Opal_Black.png" alt="Opal Black Logo">
-      <div class="logo-card-footer">
-        <div class="logo-usage-label">Black logo — Light backgrounds</div>
-        <a class="dl-btn on-light" href="Opal_Black.png" download><span class="dl-icon">↓</span> PNG</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="sub-label" style="margin-top:32px;">Crest</div>
-  <div class="logo-grid">
-    <div class="logo-card dark" style="align-items:center;">
-      <img class="crest-img" src="Crest_White.png" alt="Opal White Crest">
-      <div class="logo-card-footer">
-        <div class="logo-usage-label">White crest — Dark backgrounds</div>
-        <a class="dl-btn on-dark" href="Crest_White.png" download><span class="dl-icon">↓</span> PNG</a>
-      </div>
-    </div>
-    <div class="logo-card light" style="align-items:center;">
-      <img class="crest-img" src="Crest_Black.png" alt="Opal Black Crest">
-      <div class="logo-card-footer">
-        <div class="logo-usage-label">Black crest — Light backgrounds</div>
-        <a class="dl-btn on-light" href="Crest_Black.png" download><span class="dl-icon">↓</span> PNG</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="note-box" style="margin-top:24px;">
-    <strong>Co-branding:</strong> When placing Opal's logo next to your logo, both must be the same optical height. Separate with equal negative space or a thin divider. Neither logo should dominate.
-  </div>
-</section>
-
-<!-- ════════════ GEMS ════════════ -->
-<section id="gems">
-  <div class="section-label">03 — Gem Sculptures</div>
-  <h2>3D Opal Gems</h2>
-  <p class="section-desc">These 3D gem renders represent user focus milestones. Always display on a pure black background. Never crop, recolor, overlay text, or apply filters.</p>
-
-  <div class="gems-grid">
-    <div class="gem-card">
-      <img src="Gems/Milestone_5.png" alt="Milestone 5">
-      <div class="card-overlay">
-        <span class="card-overlay-label">Milestone 5</span>
-        <a class="dl-btn on-dark" href="Gems/Milestone_5.png" download><span class="dl-icon">↓</span></a>
-      </div>
-    </div>
-    <div class="gem-card">
-      <img src="Gems/Milestone_6.png" alt="Milestone 6">
-      <div class="card-overlay">
-        <span class="card-overlay-label">Milestone 6</span>
-        <a class="dl-btn on-dark" href="Gems/Milestone_6.png" download><span class="dl-icon">↓</span></a>
-      </div>
-    </div>
-    <div class="gem-card">
-      <img src="Gems/Milestone_7.png" alt="Milestone 7">
-      <div class="card-overlay">
-        <span class="card-overlay-label">Milestone 7</span>
-        <a class="dl-btn on-dark" href="Gems/Milestone_7.png" download><span class="dl-icon">↓</span></a>
-      </div>
-    </div>
-    <div class="gem-card">
-      <img src="Gems/Milestone_8.png" alt="Milestone 8">
-      <div class="card-overlay">
-        <span class="card-overlay-label">Milestone 8</span>
-        <a class="dl-btn on-dark" href="Gems/Milestone_8.png" download><span class="dl-icon">↓</span></a>
-      </div>
-    </div>
-    <div class="gem-card">
-      <img src="Gems/Milestone_13.png" alt="Milestone 13">
-      <div class="card-overlay">
-        <span class="card-overlay-label">Milestone 13</span>
-        <a class="dl-btn on-dark" href="Gems/Milestone_13.png" download><span class="dl-icon">↓</span></a>
-      </div>
-    </div>
-    <div class="gem-card">
-      <img src="Gems/Milestone_14.png" alt="Milestone 14">
-      <div class="card-overlay">
-        <span class="card-overlay-label">Milestone 14</span>
-        <a class="dl-btn on-dark" href="Gems/Milestone_14.png" download><span class="dl-icon">↓</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════ SCREENSHOTS ════════════ -->
-<section id="screenshots">
-  <div class="section-label">04 — App Screenshots</div>
-  <h2>App Screenshots</h2>
-  <p class="section-desc">Official app screenshots for partner use. Scroll to browse, hover to download. Do not crop, annotate, or apply filters.</p>
-
-  <div class="screenshots-row">
-    <div class="screenshot-card">
-      <img src="Screenshots/Image_1_Large.jpeg" alt="Screenshot 1">
-      <div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_1_Large.jpeg" download><span class="dl-icon">↓</span></a></div>
-    </div>
-    <div class="screenshot-card">
-      <img src="Screenshots/Image_2_Large.jpeg" alt="Screenshot 2">
-      <div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_2_Large.jpeg" download><span class="dl-icon">↓</span></a></div>
-    </div>
-    <div class="screenshot-card">
-      <img src="Screenshots/Image_3_Large.jpeg" alt="Screenshot 3">
-      <div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_3_Large.jpeg" download><span class="dl-icon">↓</span></a></div>
-    </div>
-    <div class="screenshot-card">
-      <img src="Screenshots/Image_4_Large.jpeg" alt="Screenshot 4">
-      <div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_4_Large.jpeg" download><span class="dl-icon">↓</span></a></div>
-    </div>
-    <div class="screenshot-card">
-      <img src="Screenshots/Image_5_Large.jpeg" alt="Screenshot 5">
-      <div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_5_Large.jpeg" download><span class="dl-icon">↓</span></a></div>
-    </div>
-    <div class="screenshot-card">
-      <img src="Screenshots/Image_6_Large.jpeg" alt="Screenshot 6">
-      <div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_6_Large.jpeg" download><span class="dl-icon">↓</span></a></div>
-    </div>
-    <div class="screenshot-card">
-      <img src="Screenshots/Image_7_Large.jpeg" alt="Screenshot 7">
-      <div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_7_Large.jpeg" download><span class="dl-icon">↓</span></a></div>
-    </div>
-    <div class="screenshot-card">
-      <img src="Screenshots/Image_8_Large.jpeg" alt="Screenshot 8">
-      <div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_8_Large.jpeg" download><span class="dl-icon">↓</span></a></div>
-    </div>
-    <div class="screenshot-card">
-      <img src="Screenshots/Image_9_Large.jpeg" alt="Screenshot 9">
-      <div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_9_Large.jpeg" download><span class="dl-icon">↓</span></a></div>
-    </div>
-    <div class="screenshot-card">
-      <img src="Screenshots/Image_10_Large.jpeg" alt="Screenshot 10">
-      <div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_10_Large.jpeg" download><span class="dl-icon">↓</span></a></div>
-    </div>
-    <div class="screenshot-card">
-      <img src="Screenshots/Image_11_Large.jpeg" alt="Screenshot 11">
-      <div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_11_Large.jpeg" download><span class="dl-icon">↓</span></a></div>
-    </div>
-    <div class="screenshot-card">
-      <img src="Screenshots/Image_12_Large.jpeg" alt="Screenshot 12">
-      <div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_12_Large.jpeg" download><span class="dl-icon">↓</span></a></div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════ OTHER ASSETS ════════════ -->
-<section id="assets">
-  <div class="section-label">05 — Other Assets</div>
-  <h2>Additional Assets</h2>
-  <p class="section-desc">Use only the files provided. Do not screenshot or re-export from the app or website.</p>
-
-  <div class="assets-grid">
-    <div class="asset-card">
-      <div class="asset-preview"><img src="App_Icon.png" alt="App Icon"></div>
-      <div class="asset-info">
-        <div class="asset-meta"><div class="asset-name">App Icon</div><div class="asset-desc">Rounded square. Do not crop or reshape.</div></div>
-        <a class="dl-btn on-dark" href="App_Icon.png" download><span class="dl-icon">↓</span></a>
-      </div>
-    </div>
-    <div class="asset-card">
-      <div class="asset-preview"><img src="App_Ratings.png" alt="Ratings Badge"></div>
-      <div class="asset-info">
-        <div class="asset-meta"><div class="asset-name">Ratings Badge</div><div class="asset-desc">App Store social proof. Use as provided.</div></div>
-        <a class="dl-btn on-dark" href="App_Ratings.png" download><span class="dl-icon">↓</span></a>
-      </div>
-    </div>
-    <div class="asset-card">
-      <div class="asset-preview"><img src="Apple_Design_Awards.png" alt="Apple Design Award"></div>
-      <div class="asset-info">
-        <div class="asset-meta"><div class="asset-name">Award Badge</div><div class="asset-desc">ADA lockup. Black background only.</div></div>
-        <a class="dl-btn on-dark" href="Apple_Design_Awards.png" download><span class="dl-icon">↓</span></a>
-      </div>
-    </div>
-    <div class="asset-card">
-      <div class="asset-preview"><img src="Colours.jpg" alt="Colour Reference"></div>
-      <div class="asset-info">
-        <div class="asset-meta"><div class="asset-name">Colour Reference</div><div class="asset-desc">Full palette reference sheet.</div></div>
-        <a class="dl-btn on-dark" href="Colours.jpg" download><span class="dl-icon">↓</span></a>
-      </div>
-    </div>
-    <div class="asset-card">
-      <div class="asset-preview"><img src="Images/Gem_Burst_Logo.jpg" alt="Gem Burst Logo"></div>
-      <div class="asset-info">
-        <div class="asset-meta"><div class="asset-name">Gem Burst + Logo</div><div class="asset-desc">Hero image with logo lockup.</div></div>
-        <a class="dl-btn on-dark" href="Images/Gem_Burst_Logo.jpg" download><span class="dl-icon">↓</span></a>
-      </div>
-    </div>
-    <div class="asset-card">
-      <div class="asset-preview"><img src="Images/Gem_Burst.jpg" alt="Gem Burst"></div>
-      <div class="asset-info">
-        <div class="asset-meta"><div class="asset-name">Gem Burst</div><div class="asset-desc">Standalone gem burst visual.</div></div>
-        <a class="dl-btn on-dark" href="Images/Gem_Burst.jpg" download><span class="dl-icon">↓</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════ TYPOGRAPHY ════════════ -->
 <section id="typography">
-  <div class="section-label">06 — Typography</div>
-  <h2>Type Hierarchy</h2>
-  <p class="section-desc">Opal uses SF Pro Text. Do not recreate Opal's typefaces without approval. Use these as reference when setting text alongside Opal assets.</p>
+  <div class="section-label">02 — Typography</div>
+  <h2>Type System</h2>
+  <p class="section-desc">SF Pro Text across all touchpoints. Match these styles when setting text alongside Opal assets.</p>
 
   <div class="type-sample">
-    <div class="type-label">SF Pro Text Bold — Headlines</div>
-    <div style="font-size:48px;font-weight:700;letter-spacing:-0.04em;line-height:1.0;">Take back<br>your time.</div>
-    <div class="type-meta">SF Pro Text Bold · 700 · −0.04em tracking · #FFFFFF</div>
+    <div class="type-label">Bold — Headlines</div>
+    <div style="font-size:44px;font-weight:700;letter-spacing:-0.04em;line-height:1.05;">Focus is hard.<br>We made it easier.</div>
+    <div class="type-meta">SF Pro Text Bold · 700 · −0.04em · #FFFFFF</div>
   </div>
   <div class="type-sample">
-    <div class="type-label">SF Pro Text Semibold — Subheadings</div>
-    <div style="font-size:24px;font-weight:600;letter-spacing:-0.02em;line-height:1.3;">Screen time, reimagined.</div>
-    <div class="type-meta">SF Pro Text Semibold · 600 · −0.02em tracking · #FFFFFF</div>
+    <div class="type-label">Semibold — Subheadings</div>
+    <div style="font-size:22px;font-weight:600;letter-spacing:-0.02em;line-height:1.3;">The #1 Screen Time App</div>
+    <div class="type-meta">SF Pro Text Semibold · 600 · −0.02em · #FFFFFF</div>
   </div>
   <div class="type-sample">
-    <div class="type-label">SF Pro Text Medium — Body</div>
-    <div style="font-size:17px;font-weight:400;line-height:1.65;color:var(--secondary);max-width:520px;">Opal helps you build healthier relationships with your phone — without willpower, guilt, or tracking every tap.</div>
+    <div class="type-label">Medium — Body</div>
+    <div style="font-size:16px;font-weight:400;line-height:1.65;color:var(--secondary);max-width:480px;">Opal helps you take control of your screen time and find your flow — without willpower, guilt, or tracking every tap.</div>
     <div class="type-meta">SF Pro Text Medium · 400 · #BCBBC0</div>
   </div>
 
   <div class="font-downloads">
-    <a class="font-dl" href="SF-Pro-Text-Bold.otf" download>
-      <span>↓</span> SF Pro Text Bold <span class="meta">OTF</span>
+    <a class="font-dl" href="SF-Pro-Text-Bold.otf" download><span>↓</span> Bold <span class="meta">OTF</span></a>
+    <a class="font-dl" href="SF-Pro-Text-Semibold.otf" download><span>↓</span> Semibold <span class="meta">OTF</span></a>
+    <a class="font-dl" href="SF-Pro-Text-Medium.otf" download><span>↓</span> Medium <span class="meta">OTF</span></a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="logos">
+  <div class="section-label">03 — Logos</div>
+  <h2>Logo Usage</h2>
+  <p class="section-desc">Always use as provided. Never recreate, recolor, stretch, or apply effects.</p>
+
+  <div class="sub-label">Wordmark</div>
+  <div class="logo-grid">
+    <div class="logo-card dark">
+      <img class="logo-img" src="Opal_White.png" alt="Opal White">
+      <div class="logo-card-footer">
+        <div class="logo-usage-label">White — Dark backgrounds</div>
+        <a class="dl-btn on-dark" href="Opal_White.png" download>↓ PNG</a>
+      </div>
+    </div>
+    <div class="logo-card light">
+      <img class="logo-img" src="Opal_Black.png" alt="Opal Black">
+      <div class="logo-card-footer">
+        <div class="logo-usage-label">Black — Light backgrounds</div>
+        <a class="dl-btn on-light" href="Opal_Black.png" download>↓ PNG</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:28px;">Crest</div>
+  <div class="crest-grid">
+    <div class="crest-card dark">
+      <div class="crest-img-wrap"><img class="crest-img" src="Crest_White.png" alt="Crest White"></div>
+      <div class="logo-card-footer">
+        <div class="logo-usage-label" style="color:rgba(255,255,255,0.25);">White — Dark backgrounds</div>
+        <a class="dl-btn on-dark" href="Crest_White.png" download>↓ PNG</a>
+      </div>
+    </div>
+    <div class="crest-card light">
+      <div class="crest-img-wrap"><img class="crest-img" src="Crest_Black.png" alt="Crest Black"></div>
+      <div class="logo-card-footer">
+        <div class="logo-usage-label" style="color:rgba(0,0,0,0.25);">Black — Light backgrounds</div>
+        <a class="dl-btn on-light" href="Crest_Black.png" download>↓ PNG</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-box" style="margin-top:20px;">
+    <strong>Co-branding:</strong> Both logos must be the same optical height. Separate with equal spacing or a thin divider.
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="app-icon">
+  <div class="section-label">04 — App Icon</div>
+  <h2>App Icon</h2>
+  <p class="section-desc">Use as provided. Do not crop, reshape, add borders, or modify.</p>
+  <div class="app-icon-row">
+    <img class="app-icon-img" src="App_Icon.png" alt="Opal App Icon">
+    <div class="app-icon-details">
+      <h3>Opal App Icon</h3>
+      <p>Display at its original rounded-square shape. Do not place inside another container or add shadows.</p>
+      <a class="dl-btn on-dark" href="App_Icon.png" download>↓ Download PNG</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="gems">
+  <div class="section-label">05 — Gems</div>
+  <h2>Focus Gems</h2>
+  <p class="section-desc">3D gems representing focus milestones. Always on pure black. Never crop, recolor, or overlay text.</p>
+
+  <div class="gems-grid">
+    <div class="gem-card"><img src="Gems/Milestone_5.png" alt="Milestone 5"><div class="card-overlay"><span class="card-overlay-label">Milestone 5</span><a class="dl-btn on-dark" href="Gems/Milestone_5.png" download>↓</a></div></div>
+    <div class="gem-card"><img src="Gems/Milestone_6.png" alt="Milestone 6"><div class="card-overlay"><span class="card-overlay-label">Milestone 6</span><a class="dl-btn on-dark" href="Gems/Milestone_6.png" download>↓</a></div></div>
+    <div class="gem-card"><img src="Gems/Milestone_7.png" alt="Milestone 7"><div class="card-overlay"><span class="card-overlay-label">Milestone 7</span><a class="dl-btn on-dark" href="Gems/Milestone_7.png" download>↓</a></div></div>
+    <div class="gem-card"><img src="Gems/Milestone_8.png" alt="Milestone 8"><div class="card-overlay"><span class="card-overlay-label">Milestone 8</span><a class="dl-btn on-dark" href="Gems/Milestone_8.png" download>↓</a></div></div>
+    <div class="gem-card"><img src="Gems/Milestone_13.png" alt="Milestone 13"><div class="card-overlay"><span class="card-overlay-label">Milestone 13</span><a class="dl-btn on-dark" href="Gems/Milestone_13.png" download>↓</a></div></div>
+    <div class="gem-card"><img src="Gems/Milestone_14.png" alt="Milestone 14"><div class="card-overlay"><span class="card-overlay-label">Milestone 14</span><a class="dl-btn on-dark" href="Gems/Milestone_14.png" download>↓</a></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="screenshots">
+  <div class="section-label">06 — Screenshots</div>
+  <h2>App Screenshots</h2>
+  <p class="section-desc">Official screenshots. Scroll to browse, hover to download. Do not crop or annotate.</p>
+
+  <div class="screenshots-row">
+    <div class="screenshot-card"><img src="Screenshots/Image_1_Large.jpeg" alt="Screenshot 1"><div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_1_Large.jpeg" download>↓</a></div></div>
+    <div class="screenshot-card"><img src="Screenshots/Image_2_Large.jpeg" alt="Screenshot 2"><div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_2_Large.jpeg" download>↓</a></div></div>
+    <div class="screenshot-card"><img src="Screenshots/Image_3_Large.jpeg" alt="Screenshot 3"><div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_3_Large.jpeg" download>↓</a></div></div>
+    <div class="screenshot-card"><img src="Screenshots/Image_4_Large.jpeg" alt="Screenshot 4"><div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_4_Large.jpeg" download>↓</a></div></div>
+    <div class="screenshot-card"><img src="Screenshots/Image_5_Large.jpeg" alt="Screenshot 5"><div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_5_Large.jpeg" download>↓</a></div></div>
+    <div class="screenshot-card"><img src="Screenshots/Image_6_Large.jpeg" alt="Screenshot 6"><div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_6_Large.jpeg" download>↓</a></div></div>
+    <div class="screenshot-card"><img src="Screenshots/Image_7_Large.jpeg" alt="Screenshot 7"><div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_7_Large.jpeg" download>↓</a></div></div>
+    <div class="screenshot-card"><img src="Screenshots/Image_8_Large.jpeg" alt="Screenshot 8"><div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_8_Large.jpeg" download>↓</a></div></div>
+    <div class="screenshot-card"><img src="Screenshots/Image_9_Large.jpeg" alt="Screenshot 9"><div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_9_Large.jpeg" download>↓</a></div></div>
+    <div class="screenshot-card"><img src="Screenshots/Image_10_Large.jpeg" alt="Screenshot 10"><div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_10_Large.jpeg" download>↓</a></div></div>
+    <div class="screenshot-card"><img src="Screenshots/Image_11_Large.jpeg" alt="Screenshot 11"><div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_11_Large.jpeg" download>↓</a></div></div>
+    <div class="screenshot-card"><img src="Screenshots/Image_12_Large.jpeg" alt="Screenshot 12"><div class="card-overlay"><a class="dl-btn on-dark" href="Screenshots/Image_12_Large.jpeg" download>↓</a></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="assets">
+  <div class="section-label">07 — Assets</div>
+  <h2>Brand Imagery</h2>
+  <p class="section-desc">Key visuals for partner materials. Use only provided files.</p>
+
+  <div class="sub-label">Hero Visuals</div>
+  <div class="hero-assets-grid">
+    <div class="hero-asset-card">
+      <img src="Images/Gem_Burst_Logo.jpg" alt="Opal Hero with Logo">
+      <div class="card-overlay">
+        <span class="card-overlay-label">Opal Hero — With Logo</span>
+        <a class="dl-btn on-dark" href="Images/Gem_Burst_Logo.jpg" download>↓ JPG</a>
+      </div>
+    </div>
+    <div class="hero-asset-card">
+      <img src="Images/Gem_Burst.jpg" alt="Opal Hero Background">
+      <div class="card-overlay">
+        <span class="card-overlay-label">Opal Hero — Background</span>
+        <a class="dl-btn on-dark" href="Images/Gem_Burst.jpg" download>↓ JPG</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:28px;">Badges</div>
+  <div class="badge-row">
+    <a class="badge-item" href="App_Ratings.png" download>
+      <img src="App_Ratings.png" alt="Ratings">
+      <span>App Store Ratings · ↓</span>
     </a>
-    <a class="font-dl" href="SF-Pro-Text-Semibold.otf" download>
-      <span>↓</span> SF Pro Text Semibold <span class="meta">OTF</span>
-    </a>
-    <a class="font-dl" href="SF-Pro-Text-Medium.otf" download>
-      <span>↓</span> SF Pro Text Medium <span class="meta">OTF</span>
+    <a class="badge-item" href="Apple_Design_Awards.png" download>
+      <img src="Apple_Design_Awards.png" alt="ADA">
+      <span>Apple Design Award · ↓</span>
     </a>
   </div>
 </section>
 
-<!-- ════════════ RULES ════════════ -->
+<div class="divider"></div>
+
 <section id="rules">
-  <div class="section-label">07 — Usage Rules</div>
+  <div class="section-label">08 — Rules</div>
   <h2>Do's & Don'ts</h2>
-  <p class="section-desc">These rules are non-negotiable. Contact us before publishing if unsure.</p>
+  <p class="section-desc">Non-negotiable. Reach out before publishing if unsure.</p>
 
   <div class="rules-grid">
     <div class="rules-col do">
-      <h3><span style="font-size:14px;">✓</span> Do</h3>
+      <h3>✓ Do</h3>
       <div class="rule-item"><span class="rule-icon">✓</span> Use white logo on dark/black backgrounds</div>
       <div class="rule-item"><span class="rule-icon">✓</span> Use black logo on white/light backgrounds</div>
-      <div class="rule-item"><span class="rule-icon">✓</span> Maintain clear space around the logo on all sides</div>
-      <div class="rule-item"><span class="rule-icon">✓</span> Match Opal logo to the same optical height as your logo in co-branded placements</div>
-      <div class="rule-item"><span class="rule-icon">✓</span> Display gem sculptures on black backgrounds only</div>
-      <div class="rule-item"><span class="rule-icon">✓</span> Use provided files in their original format</div>
+      <div class="rule-item"><span class="rule-icon">✓</span> Maintain clear space around the logo</div>
+      <div class="rule-item"><span class="rule-icon">✓</span> Match optical height in co-branded placements</div>
+      <div class="rule-item"><span class="rule-icon">✓</span> Display gems on black backgrounds only</div>
+      <div class="rule-item"><span class="rule-icon">✓</span> Use provided files in original format</div>
       <div class="rule-item"><span class="rule-icon">✓</span> Refer to the app as "Opal" — capital O</div>
-      <div class="rule-item"><span class="rule-icon">✓</span> Contact us if you need a variation or are unsure</div>
+      <div class="rule-item"><span class="rule-icon">✓</span> Reach out if you need a variation</div>
     </div>
     <div class="rules-col dont">
-      <h3><span style="font-size:14px;">✗</span> Don't</h3>
-      <div class="rule-item"><span class="rule-icon">✗</span> Place white logo on light or pale backgrounds</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Place black logo on dark or busy photographs</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Stretch, rotate, skew, or distort the logo</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Apply shadows, glows, gradients, or effects to the logo</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Recolor the logo to anything other than pure white or black</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Crop the logo so any element is cut off</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Recreate the logo or wordmark from scratch</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Use gradient accent colors as backgrounds</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Apply filters or artistic treatments to any asset</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Overlay text on top of gem sculptures</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Screenshot or re-export assets from the app</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Use Opal assets to imply endorsement beyond agreed scope</div>
+      <h3>✗ Don't</h3>
+      <div class="rule-item"><span class="rule-icon">✗</span> Place white logo on light backgrounds</div>
+      <div class="rule-item"><span class="rule-icon">✗</span> Place black logo on dark or busy photos</div>
+      <div class="rule-item"><span class="rule-icon">✗</span> Stretch, rotate, skew, or distort</div>
+      <div class="rule-item"><span class="rule-icon">✗</span> Apply shadows, glows, or effects</div>
+      <div class="rule-item"><span class="rule-icon">✗</span> Recolor beyond pure white or black</div>
+      <div class="rule-item"><span class="rule-icon">✗</span> Crop the logo or cut off elements</div>
+      <div class="rule-item"><span class="rule-icon">✗</span> Recreate the logo from scratch</div>
+      <div class="rule-item"><span class="rule-icon">✗</span> Use gradients as backgrounds</div>
+      <div class="rule-item"><span class="rule-icon">✗</span> Apply filters to any asset</div>
+      <div class="rule-item"><span class="rule-icon">✗</span> Overlay text on gem sculptures</div>
+      <div class="rule-item"><span class="rule-icon">✗</span> Screenshot or re-export from the app</div>
+      <div class="rule-item"><span class="rule-icon">✗</span> Imply endorsement beyond agreed scope</div>
     </div>
   </div>
 </section>
 
-<!-- ════════════ DOWNLOADS ════════════ -->
+<div class="divider"></div>
+
 <section id="download">
-  <div class="section-label">08 — Download</div>
+  <div class="section-label">09 — Download</div>
   <h2>All Assets</h2>
-  <p class="section-desc">Click any item to download directly. All files are the approved originals.</p>
+  <p class="section-desc">Click to download directly. All files are approved originals.</p>
 
   <div class="sub-label">Logos & Crests</div>
   <div class="download-grid">
-    <a class="download-item" href="Opal_White.png" download><div><div class="download-label">Opal Logo — White</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Opal_Black.png" download><div><div class="download-label">Opal Logo — Black</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+    <a class="download-item" href="Opal_White.png" download><div><div class="download-label">Wordmark — White</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+    <a class="download-item" href="Opal_Black.png" download><div><div class="download-label">Wordmark — Black</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
     <a class="download-item" href="Crest_White.png" download><div><div class="download-label">Crest — White</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
     <a class="download-item" href="Crest_Black.png" download><div><div class="download-label">Crest — Black</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
   </div>
 
-  <div class="sub-label" style="margin-top:32px;">Gem Sculptures</div>
+  <div class="sub-label" style="margin-top:28px;">App Icon & Imagery</div>
+  <div class="download-grid">
+    <a class="download-item" href="App_Icon.png" download><div><div class="download-label">App Icon</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+    <a class="download-item" href="Images/Gem_Burst_Logo.jpg" download><div><div class="download-label">Hero — With Logo</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
+    <a class="download-item" href="Images/Gem_Burst.jpg" download><div><div class="download-label">Hero — Background</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
+  </div>
+
+  <div class="sub-label" style="margin-top:28px;">Focus Gems</div>
   <div class="download-grid">
     <a class="download-item" href="Gems/Milestone_5.png" download><div><div class="download-label">Milestone 5</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
     <a class="download-item" href="Gems/Milestone_6.png" download><div><div class="download-label">Milestone 6</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
@@ -712,21 +651,13 @@
     <a class="download-item" href="Gems/Milestone_14.png" download><div><div class="download-label">Milestone 14</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
   </div>
 
-  <div class="sub-label" style="margin-top:32px;">App & Badges</div>
+  <div class="sub-label" style="margin-top:28px;">Badges</div>
   <div class="download-grid">
-    <a class="download-item" href="App_Icon.png" download><div><div class="download-label">App Icon</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="App_Ratings.png" download><div><div class="download-label">Ratings Badge</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+    <a class="download-item" href="App_Ratings.png" download><div><div class="download-label">App Store Ratings</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
     <a class="download-item" href="Apple_Design_Awards.png" download><div><div class="download-label">Apple Design Award</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Colours.jpg" download><div><div class="download-label">Colour Reference</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
   </div>
 
-  <div class="sub-label" style="margin-top:32px;">Images</div>
-  <div class="download-grid">
-    <a class="download-item" href="Images/Gem_Burst_Logo.jpg" download><div><div class="download-label">Gem Burst + Logo</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Images/Gem_Burst.jpg" download><div><div class="download-label">Gem Burst</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
-  </div>
-
-  <div class="sub-label" style="margin-top:32px;">App Screenshots</div>
+  <div class="sub-label" style="margin-top:28px;">Screenshots</div>
   <div class="download-grid">
     <a class="download-item" href="Screenshots/Image_1_Large.jpeg" download><div><div class="download-label">Screenshot 1</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
     <a class="download-item" href="Screenshots/Image_2_Large.jpeg" download><div><div class="download-label">Screenshot 2</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
@@ -742,7 +673,7 @@
     <a class="download-item" href="Screenshots/Image_12_Large.jpeg" download><div><div class="download-label">Screenshot 12</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
   </div>
 
-  <div class="sub-label" style="margin-top:32px;">Fonts</div>
+  <div class="sub-label" style="margin-top:28px;">Fonts</div>
   <div class="download-grid">
     <a class="download-item" href="SF-Pro-Text-Bold.otf" download><div><div class="download-label">SF Pro Text Bold</div><div class="download-type">OTF</div></div><span class="download-arrow">↓</span></a>
     <a class="download-item" href="SF-Pro-Text-Semibold.otf" download><div><div class="download-label">SF Pro Text Semibold</div><div class="download-type">OTF</div></div><span class="download-arrow">↓</span></a>
@@ -750,21 +681,22 @@
   </div>
 </section>
 
-<!-- ════════════ CONTACT ════════════ -->
-<section id="contact" style="border-bottom:none;">
-  <div class="section-label">09 — Contact</div>
+<div class="divider"></div>
+
+<section id="contact" style="padding-bottom:60px;">
+  <div class="section-label">10 — Contact</div>
   <h2>Questions?</h2>
   <div class="contact-card">
     <div>
-      <p style="font-size:15px;color:rgba(255,255,255,0.65);max-width:460px;line-height:1.7;">If your use case isn't covered here, or you need a custom asset — reach out before publishing.</p>
-      <div style="margin-top:20px;font-size:13px;color:var(--secondary);">Brand: <span style="color:white;">brand@opal.so</span></div>
-      <div style="margin-top:6px;font-size:13px;color:var(--secondary);">Website: <span style="color:white;">opal.so</span></div>
+      <p style="font-size:14px;color:var(--secondary);max-width:420px;line-height:1.7;">Need a custom asset or have a use case not covered here? Reach out before publishing.</p>
+      <div style="margin-top:16px;font-size:12px;color:var(--dim);">Contact: <span style="color:white;">nour@opal.so</span></div>
+      <div style="margin-top:4px;font-size:12px;color:var(--dim);">Website: <span style="color:white;">opal.so</span></div>
     </div>
-    <a href="mailto:brand@opal.so" class="contact-btn">Get in touch →</a>
+    <a href="mailto:nour@opal.so" class="contact-btn">Reach out →</a>
   </div>
 </section>
 
-<footer>© Opal — The Focus Company · Assets provided for approved partner use only.</footer>
+<footer>© Opal — The Focus Company</footer>
 
 </body>
 </html>
