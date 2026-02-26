@@ -35,18 +35,35 @@
     background: rgba(0,0,0,0.85);
     backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
-    padding: 0 48px;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 52px;
   }
+  .nav-inner {
+    max-width: 1100px; margin: 0 auto;
+    padding: 0 48px;
+    display: flex; align-items: center;
+    height: 52px; gap: 32px;
+  }
+  .nav-logo { flex-shrink: 0; }
   .nav-logo img { height: 14px; width: auto; display: block; opacity: 0.7; }
-  .nav-links { display: flex; gap: 28px; list-style: none; }
-  .nav-links a {
+  .nav-pills {
+    display: flex; gap: 4px; list-style: none;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; flex: 1;
+  }
+  .nav-pills::-webkit-scrollbar { display: none; }
+  .nav-pills a {
+    display: block;
     color: var(--dim); text-decoration: none;
     font-size: 12px; font-weight: 600;
-    transition: color 0.2s;
+    padding: 6px 14px;
+    border-radius: 100px;
+    white-space: nowrap;
+    transition: color 0.2s, background 0.2s;
   }
-  .nav-links a:hover { color: var(--white); }
+  .nav-pills a:hover,
+  .nav-pills a.active {
+    color: var(--white);
+    background: rgba(255,255,255,0.08);
+  }
 
   /* ── Sections ── */
   section {
@@ -194,9 +211,7 @@
   .dl-btn.on-light:hover { background: rgba(0,0,0,0.1); color: #000; }
 
   /* ── App Icon ── */
-  .app-icon-row {
-    display: flex; align-items: center; gap: 32px;
-  }
+  .app-icon-row { display: flex; align-items: center; gap: 32px; }
   .app-icon-img {
     width: 120px; height: 120px;
     border-radius: 28px;
@@ -205,7 +220,7 @@
   .app-icon-details h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
   .app-icon-details p { font-size: 13px; color: var(--secondary); line-height: 1.6; margin-bottom: 12px; max-width: 380px; }
 
-  /* ── Hero Visuals (Gem Burst) ── */
+  /* ── Hero Visuals ── */
   .hero-assets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
   .hero-asset-card {
     border-radius: 14px; overflow: hidden;
@@ -243,8 +258,7 @@
   .gem-card {
     background: #000; border-radius: 14px; overflow: hidden;
     border: 1px solid var(--border);
-    aspect-ratio: 1;
-    position: relative;
+    aspect-ratio: 1; position: relative;
   }
   .gem-card img { width: 100%; height: 100%; object-fit: cover; }
   .gem-card .card-overlay {
@@ -270,8 +284,7 @@
     flex-shrink: 0; width: 180px;
     border-radius: 14px; overflow: hidden;
     border: 1px solid var(--border);
-    scroll-snap-align: start;
-    position: relative;
+    scroll-snap-align: start; position: relative;
   }
   .screenshot-card img { width: 100%; height: 340px; object-fit: cover; display: block; }
   .screenshot-card .card-overlay {
@@ -312,11 +325,32 @@
   }
   .note-box strong { color: var(--white); }
 
-  /* ── Downloads ── */
+  /* ── Downloads Accordion ── */
+  .dl-section { border-bottom: 1px solid var(--border); }
+  .dl-section:last-child { border-bottom: none; }
+  .dl-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 0;
+    cursor: pointer;
+    user-select: none;
+  }
+  .dl-header-left { display: flex; align-items: center; gap: 12px; }
+  .dl-header-title { font-size: 13px; font-weight: 600; color: var(--white); }
+  .dl-header-count { font-size: 11px; color: var(--dim); }
+  .dl-header-arrow {
+    font-size: 14px; color: var(--dim);
+    transition: transform 0.2s;
+  }
+  .dl-section.open .dl-header-arrow { transform: rotate(180deg); }
+  .dl-body {
+    display: none;
+    padding-bottom: 18px;
+  }
+  .dl-section.open .dl-body { display: block; }
   .download-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 8px; margin-top: 24px;
+    gap: 8px;
   }
   .download-item {
     border: 1px solid var(--border);
@@ -356,34 +390,39 @@
   /* ── Responsive ── */
   @media (max-width: 768px) {
     section { padding: 56px 24px; }
-    nav { padding: 0 24px; }
+    .nav-inner { padding: 0 20px; gap: 16px; }
+    .divider { margin-left: 24px; margin-right: 24px; }
     .logo-grid, .crest-grid, .rules-grid, .hero-assets-grid { grid-template-columns: 1fr; }
     .gems-grid { grid-template-columns: repeat(2, 1fr); }
     .contact-card { flex-direction: column; gap: 20px; text-align: center; }
     .contact-btn { margin-left: 0; }
-    .nav-links { display: none; }
     .app-icon-row { flex-direction: column; align-items: flex-start; gap: 20px; }
     .screenshot-card { width: 150px; }
     .screenshot-card img { height: 260px; }
+    .nav-pills a { font-size: 11px; padding: 5px 12px; }
   }
 </style>
 </head>
 <body>
 
+<!-- ════════════ NAV ════════════ -->
 <nav>
-  <div class="nav-logo"><img src="Opal_White.png" alt="Opal"></div>
-  <ul class="nav-links">
-    <li><a href="#colors">Colors</a></li>
-    <li><a href="#typography">Type</a></li>
-    <li><a href="#logos">Logos</a></li>
-    <li><a href="#gems">Gems</a></li>
-    <li><a href="#screenshots">Screenshots</a></li>
-    <li><a href="#assets">Assets</a></li>
-    <li><a href="#rules">Rules</a></li>
-    <li><a href="#download">Download</a></li>
-  </ul>
+  <div class="nav-inner">
+    <div class="nav-logo"><img src="Opal_White.png" alt="Opal"></div>
+    <ul class="nav-pills" id="navPills">
+      <li><a href="#colors" data-section="colors">Colors</a></li>
+      <li><a href="#typography" data-section="typography">Type</a></li>
+      <li><a href="#logos" data-section="logos">Logos</a></li>
+      <li><a href="#gems" data-section="gems">Gems</a></li>
+      <li><a href="#screenshots" data-section="screenshots">Screenshots</a></li>
+      <li><a href="#assets" data-section="assets">Assets</a></li>
+      <li><a href="#rules" data-section="rules">Rules</a></li>
+      <li><a href="#download" data-section="download">Download</a></li>
+    </ul>
+  </div>
 </nav>
 
+<!-- ════════════ HERO ════════════ -->
 <section id="hero">
   <div class="hero-label">Partner Brand Kit</div>
   <h1>Opal<br><span class="gradient-text">Brand Kit</span></h1>
@@ -392,6 +431,7 @@
 
 <div class="divider"></div>
 
+<!-- ════════════ COLORS ════════════ -->
 <section id="colors">
   <div class="section-label">01 — Colors</div>
   <h2>Color System</h2>
@@ -415,6 +455,7 @@
 
 <div class="divider"></div>
 
+<!-- ════════════ TYPOGRAPHY ════════════ -->
 <section id="typography">
   <div class="section-label">02 — Typography</div>
   <h2>Type System</h2>
@@ -445,6 +486,7 @@
 
 <div class="divider"></div>
 
+<!-- ════════════ LOGOS ════════════ -->
 <section id="logos">
   <div class="section-label">03 — Logos</div>
   <h2>Logo Usage</h2>
@@ -493,6 +535,7 @@
 
 <div class="divider"></div>
 
+<!-- ════════════ APP ICON ════════════ -->
 <section id="app-icon">
   <div class="section-label">04 — App Icon</div>
   <h2>App Icon</h2>
@@ -509,6 +552,7 @@
 
 <div class="divider"></div>
 
+<!-- ════════════ GEMS ════════════ -->
 <section id="gems">
   <div class="section-label">05 — Gems</div>
   <h2>Focus Gems</h2>
@@ -526,6 +570,7 @@
 
 <div class="divider"></div>
 
+<!-- ════════════ SCREENSHOTS ════════════ -->
 <section id="screenshots">
   <div class="section-label">06 — Screenshots</div>
   <h2>App Screenshots</h2>
@@ -549,6 +594,7 @@
 
 <div class="divider"></div>
 
+<!-- ════════════ ASSETS ════════════ -->
 <section id="assets">
   <div class="section-label">07 — Assets</div>
   <h2>Brand Imagery</h2>
@@ -587,6 +633,7 @@
 
 <div class="divider"></div>
 
+<!-- ════════════ RULES ════════════ -->
 <section id="rules">
   <div class="section-label">08 — Rules</div>
   <h2>Do's & Don'ts</h2>
@@ -624,68 +671,112 @@
 
 <div class="divider"></div>
 
+<!-- ════════════ DOWNLOADS ════════════ -->
 <section id="download">
   <div class="section-label">09 — Download</div>
   <h2>All Assets</h2>
-  <p class="section-desc">Click to download directly. All files are approved originals.</p>
+  <p class="section-desc">Tap a category to expand, then download individual files.</p>
 
-  <div class="sub-label">Logos & Crests</div>
-  <div class="download-grid">
-    <a class="download-item" href="Opal_White.png" download><div><div class="download-label">Wordmark — White</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Opal_Black.png" download><div><div class="download-label">Wordmark — Black</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Crest_White.png" download><div><div class="download-label">Crest — White</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Crest_Black.png" download><div><div class="download-label">Crest — Black</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+  <div class="dl-section open">
+    <div class="dl-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dl-header-left"><span class="dl-header-title">Logos & Crests</span><span class="dl-header-count">4 files</span></div>
+      <span class="dl-header-arrow">▾</span>
+    </div>
+    <div class="dl-body">
+      <div class="download-grid">
+        <a class="download-item" href="Opal_White.png" download><div><div class="download-label">Wordmark — White</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Opal_Black.png" download><div><div class="download-label">Wordmark — Black</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Crest_White.png" download><div><div class="download-label">Crest — White</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Crest_Black.png" download><div><div class="download-label">Crest — Black</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+      </div>
+    </div>
   </div>
 
-  <div class="sub-label" style="margin-top:28px;">App Icon & Imagery</div>
-  <div class="download-grid">
-    <a class="download-item" href="App_Icon.png" download><div><div class="download-label">App Icon</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Images/Gem_Burst_Logo.jpg" download><div><div class="download-label">Hero — With Logo</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Images/Gem_Burst.jpg" download><div><div class="download-label">Hero — Background</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
+  <div class="dl-section">
+    <div class="dl-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dl-header-left"><span class="dl-header-title">App Icon & Imagery</span><span class="dl-header-count">3 files</span></div>
+      <span class="dl-header-arrow">▾</span>
+    </div>
+    <div class="dl-body">
+      <div class="download-grid">
+        <a class="download-item" href="App_Icon.png" download><div><div class="download-label">App Icon</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Images/Gem_Burst_Logo.jpg" download><div><div class="download-label">Hero — With Logo</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Images/Gem_Burst.jpg" download><div><div class="download-label">Hero — Background</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
+      </div>
+    </div>
   </div>
 
-  <div class="sub-label" style="margin-top:28px;">Focus Gems</div>
-  <div class="download-grid">
-    <a class="download-item" href="Gems/Milestone_5.png" download><div><div class="download-label">Milestone 5</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Gems/Milestone_6.png" download><div><div class="download-label">Milestone 6</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Gems/Milestone_7.png" download><div><div class="download-label">Milestone 7</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Gems/Milestone_8.png" download><div><div class="download-label">Milestone 8</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Gems/Milestone_13.png" download><div><div class="download-label">Milestone 13</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Gems/Milestone_14.png" download><div><div class="download-label">Milestone 14</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+  <div class="dl-section">
+    <div class="dl-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dl-header-left"><span class="dl-header-title">Focus Gems</span><span class="dl-header-count">6 files</span></div>
+      <span class="dl-header-arrow">▾</span>
+    </div>
+    <div class="dl-body">
+      <div class="download-grid">
+        <a class="download-item" href="Gems/Milestone_5.png" download><div><div class="download-label">Milestone 5</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Gems/Milestone_6.png" download><div><div class="download-label">Milestone 6</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Gems/Milestone_7.png" download><div><div class="download-label">Milestone 7</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Gems/Milestone_8.png" download><div><div class="download-label">Milestone 8</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Gems/Milestone_13.png" download><div><div class="download-label">Milestone 13</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Gems/Milestone_14.png" download><div><div class="download-label">Milestone 14</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+      </div>
+    </div>
   </div>
 
-  <div class="sub-label" style="margin-top:28px;">Badges</div>
-  <div class="download-grid">
-    <a class="download-item" href="App_Ratings.png" download><div><div class="download-label">App Store Ratings</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Apple_Design_Awards.png" download><div><div class="download-label">Apple Design Award</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+  <div class="dl-section">
+    <div class="dl-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dl-header-left"><span class="dl-header-title">Badges</span><span class="dl-header-count">2 files</span></div>
+      <span class="dl-header-arrow">▾</span>
+    </div>
+    <div class="dl-body">
+      <div class="download-grid">
+        <a class="download-item" href="App_Ratings.png" download><div><div class="download-label">App Store Ratings</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Apple_Design_Awards.png" download><div><div class="download-label">Apple Design Award</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+      </div>
+    </div>
   </div>
 
-  <div class="sub-label" style="margin-top:28px;">Screenshots</div>
-  <div class="download-grid">
-    <a class="download-item" href="Screenshots/Image_1_Large.jpeg" download><div><div class="download-label">Screenshot 1</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Screenshots/Image_2_Large.jpeg" download><div><div class="download-label">Screenshot 2</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Screenshots/Image_3_Large.jpeg" download><div><div class="download-label">Screenshot 3</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Screenshots/Image_4_Large.jpeg" download><div><div class="download-label">Screenshot 4</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Screenshots/Image_5_Large.jpeg" download><div><div class="download-label">Screenshot 5</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Screenshots/Image_6_Large.jpeg" download><div><div class="download-label">Screenshot 6</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Screenshots/Image_7_Large.jpeg" download><div><div class="download-label">Screenshot 7</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Screenshots/Image_8_Large.jpeg" download><div><div class="download-label">Screenshot 8</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Screenshots/Image_9_Large.jpeg" download><div><div class="download-label">Screenshot 9</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Screenshots/Image_10_Large.jpeg" download><div><div class="download-label">Screenshot 10</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Screenshots/Image_11_Large.jpeg" download><div><div class="download-label">Screenshot 11</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="Screenshots/Image_12_Large.jpeg" download><div><div class="download-label">Screenshot 12</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
+  <div class="dl-section">
+    <div class="dl-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dl-header-left"><span class="dl-header-title">Screenshots</span><span class="dl-header-count">12 files</span></div>
+      <span class="dl-header-arrow">▾</span>
+    </div>
+    <div class="dl-body">
+      <div class="download-grid">
+        <a class="download-item" href="Screenshots/Image_1_Large.jpeg" download><div><div class="download-label">Screenshot 1</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Screenshots/Image_2_Large.jpeg" download><div><div class="download-label">Screenshot 2</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Screenshots/Image_3_Large.jpeg" download><div><div class="download-label">Screenshot 3</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Screenshots/Image_4_Large.jpeg" download><div><div class="download-label">Screenshot 4</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Screenshots/Image_5_Large.jpeg" download><div><div class="download-label">Screenshot 5</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Screenshots/Image_6_Large.jpeg" download><div><div class="download-label">Screenshot 6</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Screenshots/Image_7_Large.jpeg" download><div><div class="download-label">Screenshot 7</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Screenshots/Image_8_Large.jpeg" download><div><div class="download-label">Screenshot 8</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Screenshots/Image_9_Large.jpeg" download><div><div class="download-label">Screenshot 9</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Screenshots/Image_10_Large.jpeg" download><div><div class="download-label">Screenshot 10</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Screenshots/Image_11_Large.jpeg" download><div><div class="download-label">Screenshot 11</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Screenshots/Image_12_Large.jpeg" download><div><div class="download-label">Screenshot 12</div><div class="download-type">JPEG</div></div><span class="download-arrow">↓</span></a>
+      </div>
+    </div>
   </div>
 
-  <div class="sub-label" style="margin-top:28px;">Fonts</div>
-  <div class="download-grid">
-    <a class="download-item" href="SF-Pro-Text-Bold.otf" download><div><div class="download-label">SF Pro Text Bold</div><div class="download-type">OTF</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="SF-Pro-Text-Semibold.otf" download><div><div class="download-label">SF Pro Text Semibold</div><div class="download-type">OTF</div></div><span class="download-arrow">↓</span></a>
-    <a class="download-item" href="SF-Pro-Text-Medium.otf" download><div><div class="download-label">SF Pro Text Medium</div><div class="download-type">OTF</div></div><span class="download-arrow">↓</span></a>
+  <div class="dl-section">
+    <div class="dl-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dl-header-left"><span class="dl-header-title">Fonts</span><span class="dl-header-count">3 files</span></div>
+      <span class="dl-header-arrow">▾</span>
+    </div>
+    <div class="dl-body">
+      <div class="download-grid">
+        <a class="download-item" href="SF-Pro-Text-Bold.otf" download><div><div class="download-label">SF Pro Text Bold</div><div class="download-type">OTF</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="SF-Pro-Text-Semibold.otf" download><div><div class="download-label">SF Pro Text Semibold</div><div class="download-type">OTF</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="SF-Pro-Text-Medium.otf" download><div><div class="download-label">SF Pro Text Medium</div><div class="download-type">OTF</div></div><span class="download-arrow">↓</span></a>
+      </div>
+    </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
+<!-- ════════════ CONTACT ════════════ -->
 <section id="contact" style="padding-bottom:60px;">
   <div class="section-label">10 — Contact</div>
   <h2>Questions?</h2>
@@ -700,6 +791,37 @@
 </section>
 
 <footer>© Opal — The Focus Company</footer>
+
+<script>
+// Active pill on scroll
+const pills = document.querySelectorAll('.nav-pills a');
+const sections = document.querySelectorAll('section[id]');
+const navPills = document.getElementById('navPills');
+
+function updateActive() {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 80) current = s.id;
+  });
+  pills.forEach(p => {
+    p.classList.toggle('active', p.getAttribute('data-section') === current);
+    if (p.classList.contains('active')) {
+      p.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  });
+}
+window.addEventListener('scroll', updateActive, { passive: true });
+updateActive();
+
+// Smooth scroll
+pills.forEach(p => {
+  p.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(p.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
 
 </body>
 </html>
