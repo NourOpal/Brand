@@ -32,25 +32,28 @@
   /* ── Nav ── */
   nav {
     position: sticky; top: 0; z-index: 100;
-    padding: 12px 48px;
-    display: flex; align-items: center; justify-content: center;
-    gap: 20px;
+    display: flex; justify-content: center;
+    padding: 12px 24px;
   }
-  .nav-logo { flex-shrink: 0; }
-  .nav-logo img { height: 18px; width: auto; display: block; }
-  .nav-pill-container {
+  .nav-bar {
     display: flex; align-items: center; gap: 2px;
     list-style: none;
-    background: rgba(255,255,255,0.06);
+    background: rgba(18,18,18,0.92);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 100px;
     padding: 4px;
-    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
     overflow-x: auto; -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
-  .nav-pill-container::-webkit-scrollbar { display: none; }
-  .nav-pill-container a {
+  .nav-bar::-webkit-scrollbar { display: none; }
+  .nav-bar .nav-logo {
+    display: flex; align-items: center;
+    padding: 0 14px 0 12px;
+    flex-shrink: 0;
+  }
+  .nav-bar .nav-logo img { height: 16px; width: auto; display: block; }
+  .nav-bar a {
     display: block;
     color: var(--dim); text-decoration: none;
     font-size: 12px; font-weight: 600;
@@ -59,10 +62,10 @@
     white-space: nowrap;
     transition: color 0.25s, background 0.25s;
   }
-  .nav-pill-container a:hover {
+  .nav-bar a:hover {
     color: var(--white);
   }
-  .nav-pill-container a.active {
+  .nav-bar a.active {
     color: var(--white);
     background: rgba(255,255,255,0.1);
   }
@@ -392,7 +395,8 @@
   /* ── Responsive ── */
   @media (max-width: 768px) {
     section { padding: 56px 24px; }
-    nav { padding: 10px 20px; gap: 12px; }
+    nav { padding: 10px 16px; }
+    .nav-bar a { font-size: 11px; padding: 6px 12px; }
     .divider { margin-left: 24px; margin-right: 24px; }
     .logo-grid, .crest-grid, .rules-grid, .hero-assets-grid { grid-template-columns: 1fr; }
     .gems-grid { grid-template-columns: repeat(2, 1fr); }
@@ -409,17 +413,17 @@
 
 <!-- ════════════ NAV ════════════ -->
 <nav>
-  <div class="nav-logo"><img src="Opal_White.png" alt="Opal"></div>
-  <ul class="nav-pill-container" id="navPills">
-    <li><a href="#colors" data-section="colors">Colors</a></li>
-    <li><a href="#typography" data-section="typography">Type</a></li>
-    <li><a href="#logos" data-section="logos">Logos</a></li>
-    <li><a href="#gems" data-section="gems">Gems</a></li>
-    <li><a href="#screenshots" data-section="screenshots">Screenshots</a></li>
-    <li><a href="#assets" data-section="assets">Assets</a></li>
-    <li><a href="#rules" data-section="rules">Rules</a></li>
-    <li><a href="#download" data-section="download">Download</a></li>
-  </ul>
+  <div class="nav-bar" id="navPills">
+    <div class="nav-logo"><img src="Opal_White.png" alt="Opal"></div>
+    <a href="#colors" data-section="colors">Colors</a>
+    <a href="#typography" data-section="typography">Type</a>
+    <a href="#logos" data-section="logos">Logos</a>
+    <a href="#gems" data-section="gems">Gems</a>
+    <a href="#screenshots" data-section="screenshots">Screenshots</a>
+    <a href="#assets" data-section="assets">Assets</a>
+    <a href="#rules" data-section="rules">Rules</a>
+    <a href="#download" data-section="download">Download</a>
+  </div>
 </nav>
 
 <!-- ════════════ HERO ════════════ -->
@@ -794,7 +798,7 @@
 
 <script>
 // Active pill on scroll
-const pills = document.querySelectorAll('.nav-pill-container a');
+const pills = document.querySelectorAll('.nav-bar a');
 const sections = document.querySelectorAll('section[id]');
 const navPills = document.getElementById('navPills');
 
