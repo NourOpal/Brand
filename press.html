@@ -210,6 +210,31 @@
   }
   .press-release-link:hover { border-color: var(--border-hover); color: var(--white); }
 
+  /* ── Press Mentions ── */
+  .press-mention-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 10px;
+  }
+  .press-mention {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    text-decoration: none;
+    transition: border-color 0.2s;
+    display: block;
+  }
+  .press-mention:hover { border-color: var(--border-hover); }
+  .press-mention-pub {
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--dim); margin-bottom: 8px;
+  }
+  .press-mention-title {
+    font-size: 15px; font-weight: 600;
+    color: var(--white); line-height: 1.4;
+  }
+
   /* ── Contact Bar ── */
   .press-contact-bar {
     border: 1px solid var(--border);
@@ -281,6 +306,7 @@
     .press-contact-bar { flex-direction: column; gap: 20px; text-align: center; }
     .contact-btn-sm { margin-left: 0; }
     .press-release-item { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .press-mention-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -400,33 +426,85 @@
 
 <div class="divider"></div>
 
-<!-- PRESS RELEASES -->
+<!-- PRESS -->
 <section id="releases">
-  <div class="section-label">Archive</div>
+  <div class="section-label">From the Blog</div>
   <h2>Press Releases</h2>
-  <p class="section-desc">Official announcements and press coverage.</p>
+  <p class="section-desc">Official announcements from the Opal team.</p>
 
   <div>
     <div class="press-release-item">
       <div>
-        <div class="press-release-title">Opal Launches Opal for Schools</div>
-        <div class="press-release-date">October 2022</div>
+        <div class="press-release-title">We Don't Need to Fear AI Taking Our Jobs. We Need to Fear It Taking Our Attention.</div>
+        <div class="press-release-date">January 2026 · Kenneth Schlenker</div>
       </div>
-      <a class="press-release-link" href="https://www.opal.so/blog" target="_blank">Read →</a>
+      <a class="press-release-link" href="https://www.opal.so/blog/ai-attention-fear" target="_blank">Read →</a>
     </div>
     <div class="press-release-item">
       <div>
-        <div class="press-release-title">Opal Named Apple Design Award Finalist</div>
-        <div class="press-release-date">June 2022</div>
+        <div class="press-release-title">Schools Use Opal to Fight Addictive Apps — A Smarter Phone Policy for Education</div>
+        <div class="press-release-date">January 2026 · Kenneth Schlenker</div>
       </div>
-      <a class="press-release-link" href="https://www.opal.so/blog" target="_blank">Read →</a>
+      <a class="press-release-link" href="https://www.opal.so/blog/opal-for-schools-2025" target="_blank">Read →</a>
     </div>
     <div class="press-release-item">
       <div>
-        <div class="press-release-title">Opal Raises $4.3M Seed Round</div>
-        <div class="press-release-date">December 2021</div>
+        <div class="press-release-title">Opal Named Apple Design Award Finalist — A Big Win for Focus</div>
+        <div class="press-release-date">June 2025</div>
       </div>
-      <a class="press-release-link" href="https://www.opal.so/blog" target="_blank">Read →</a>
+      <a class="press-release-link" href="https://www.opal.so/blog/apple-design-award-finalist" target="_blank">Read →</a>
+    </div>
+  </div>
+
+  <div style="margin-top:64px;">
+    <div class="sub-label">Opal in the Press</div>
+    <p class="section-desc" style="margin-bottom:28px;">Featured coverage from leading publications.</p>
+
+    <div class="press-mention-grid">
+      <a class="press-mention" href="https://www.nytimes.com/wirecutter/reviews/break-up-with-your-phone/" target="_blank">
+        <div class="press-mention-pub">The New York Times</div>
+        <div class="press-mention-title">Everything You Need to Break Up With Your Phone</div>
+      </a>
+      <a class="press-mention" href="https://www.newyorker.com/culture/infinite-scroll/gentle-parenting-my-smartphone-addiction" target="_blank">
+        <div class="press-mention-pub">The New Yorker</div>
+        <div class="press-mention-title">Gentle Parenting My Smartphone Addiction</div>
+      </a>
+      <a class="press-mention" href="https://www.wsj.com/health/wellness/what-a-digital-detox-can-do-for-you-e4b0b893" target="_blank">
+        <div class="press-mention-pub">Wall Street Journal</div>
+        <div class="press-mention-title">What a Digital Detox Can Do for You</div>
+      </a>
+      <a class="press-mention" href="https://fortune.com/2025/11/19/opal-founder-ceo-kenneth-schlenker-warning-labels-for-social-media-addiction-doomscrolling/" target="_blank">
+        <div class="press-mention-pub">Fortune</div>
+        <div class="press-mention-title">I Helped Build the Architecture of Addiction for Social Media</div>
+      </a>
+      <a class="press-mention" href="https://www.forbes.com/sites/jaimecatmull/2025/11/21/your-phone-is-costing-you-hours-a-day---and-your-company-millions/" target="_blank">
+        <div class="press-mention-pub">Forbes</div>
+        <div class="press-mention-title">Your Phone Is Costing You Hours a Day — And Your Company Millions</div>
+      </a>
+      <a class="press-mention" href="https://techcrunch.com/2025/12/25/the-best-distraction-blockers-to-jumpstart-your-focus-in-the-new-year/" target="_blank">
+        <div class="press-mention-pub">TechCrunch</div>
+        <div class="press-mention-title">The Best Distraction Blockers to Jump-Start Your Focus</div>
+      </a>
+      <a class="press-mention" href="https://www.theguardian.com/thefilter-us/2026/jan/06/how-to-reduce-phone-screen-time" target="_blank">
+        <div class="press-mention-pub">The Guardian</div>
+        <div class="press-mention-title">I Asked Experts How to Reduce Screen Time — Here's What They Said</div>
+      </a>
+      <a class="press-mention" href="https://www.telegraph.co.uk/money/consumer-affairs/im-spending-100-to-block-social-media/" target="_blank">
+        <div class="press-mention-pub">The Telegraph</div>
+        <div class="press-mention-title">I'm Spending £100 to Block Social Media</div>
+      </a>
+      <a class="press-mention" href="https://www.latimes.com/california/story/2025-12-31/harvard-westlake-blocks-tiktok-clash-royale-on-student-phones-hows-that-going-down" target="_blank">
+        <div class="press-mention-pub">Los Angeles Times</div>
+        <div class="press-mention-title">Harvard-Westlake Blocks TikTok and Clash Royale on Student Phones</div>
+      </a>
+      <a class="press-mention" href="https://www.gq.com/story/real-life-diet-chris-williamson-modern-wisdom" target="_blank">
+        <div class="press-mention-pub">GQ</div>
+        <div class="press-mention-title">The Real-Life Diet of Chris Williamson</div>
+      </a>
+    </div>
+
+    <div style="margin-top:24px;">
+      <a href="https://www.opal.so/about" target="_blank" style="color:var(--secondary);font-size:14px;font-weight:500;text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px;">See all press mentions on our story page →</a>
     </div>
   </div>
 </section>
