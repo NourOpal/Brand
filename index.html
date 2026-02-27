@@ -306,6 +306,26 @@
   }
   .screenshot-card:hover .card-overlay { opacity: 1; }
 
+  /* ── Video Cards ── */
+  .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+  .video-card {
+    border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--border);
+    background: #0a0a0a;
+    cursor: pointer;
+  }
+  .video-card video {
+    width: 100%; aspect-ratio: 16/9;
+    object-fit: cover; display: block;
+    background: #000;
+  }
+  .video-card-info {
+    padding: 16px 18px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .video-card-name { font-size: 14px; font-weight: 600; color: var(--white); }
+  .video-card-type { font-size: 11px; color: var(--dim); margin-top: 2px; }
+
   /* ── Rules ── */
   .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
   .rules-col h3 {
@@ -448,6 +468,7 @@
     <a href="#logos" data-section="logos">Logos</a>
     <a href="#gems" data-section="gems">Gems</a>
     <a href="#screenshots" data-section="screenshots">Screenshots</a>
+    <a href="#videos" data-section="videos">Videos</a>
     <a href="#assets" data-section="assets">Assets</a>
     <a href="#rules" data-section="rules">Rules</a>
     <a href="#download" data-section="download">Download</a>
@@ -642,9 +663,56 @@
 
 <div class="divider"></div>
 
+<!-- VIDEOS -->
+<section id="videos">
+  <div class="section-label">07 — Videos</div>
+  <h2>App in Motion</h2>
+  <p class="section-desc">Product videos showcasing Opal's key features. Click to play. Download for partner materials or social.</p>
+
+  <div class="video-grid">
+    <div class="video-card" onclick="togglePlay(this)">
+      <video src="Videos/Opal_Homepage.mp4" preload="auto" muted playsinline></video>
+      <div class="video-card-info">
+        <div><div class="video-card-name">Opal Homepage</div><div class="video-card-type">MP4</div></div>
+        <a class="dl-btn on-dark" href="Videos/Opal_Homepage.mp4" download onclick="event.stopPropagation()">↓</a>
+      </div>
+    </div>
+    <div class="video-card" onclick="togglePlay(this)">
+      <video src="Videos/Opal_Block_Screens.mov" preload="auto" muted playsinline></video>
+      <div class="video-card-info">
+        <div><div class="video-card-name">Block Screens</div><div class="video-card-type">MOV</div></div>
+        <a class="dl-btn on-dark" href="Videos/Opal_Block_Screens.mov" download onclick="event.stopPropagation()">↓</a>
+      </div>
+    </div>
+    <div class="video-card" onclick="togglePlay(this)">
+      <video src="Videos/Opal_For_Schools.mp4" preload="auto" muted playsinline></video>
+      <div class="video-card-info">
+        <div><div class="video-card-name">Opal for Schools</div><div class="video-card-type">MP4</div></div>
+        <a class="dl-btn on-dark" href="Videos/Opal_For_Schools.mp4" download onclick="event.stopPropagation()">↓</a>
+      </div>
+    </div>
+    <div class="video-card" onclick="togglePlay(this)">
+      <video src="Videos/Opal_Friends.mp4" preload="auto" muted playsinline></video>
+      <div class="video-card-info">
+        <div><div class="video-card-name">Opal Friends</div><div class="video-card-type">MP4</div></div>
+        <a class="dl-btn on-dark" href="Videos/Opal_Friends.mp4" download onclick="event.stopPropagation()">↓</a>
+      </div>
+    </div>
+    <div class="video-card" onclick="togglePlay(this)">
+      <video src="Videos/Opal_Widget.mp4" preload="auto" muted playsinline></video>
+      <div class="video-card-info">
+        <div><div class="video-card-name">Opal Widget</div><div class="video-card-type">MP4</div></div>
+        <a class="dl-btn on-dark" href="Videos/Opal_Widget.mp4" download onclick="event.stopPropagation()">↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- ASSETS -->
 <section id="assets">
-  <div class="section-label">07 — Assets</div>
+  <div class="section-label">08 — Assets</div>
   <h2>Brand Imagery</h2>
   <p class="section-desc">Key visuals for partner materials. Use only provided files.</p>
 
@@ -683,7 +751,7 @@
 
 <!-- RULES -->
 <section id="rules">
-  <div class="section-label">08 — Rules</div>
+  <div class="section-label">09 — Rules</div>
   <h2>Do's & Don'ts</h2>
   <p class="section-desc">Non-negotiable. Reach out before publishing if unsure.</p>
 
@@ -721,7 +789,7 @@
 
 <!-- DOWNLOADS -->
 <section id="download">
-  <div class="section-label">09 — Download</div>
+  <div class="section-label">10 — Download</div>
   <h2>All Assets</h2>
   <p class="section-desc">Tap a category to expand, then download individual files.</p>
 
@@ -767,6 +835,22 @@
         <a class="download-item" href="Gems/Milestone_8.png" download><div><div class="download-label">Milestone 8</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
         <a class="download-item" href="Gems/Milestone_13.png" download><div><div class="download-label">Milestone 13</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
         <a class="download-item" href="Gems/Milestone_14.png" download><div><div class="download-label">Milestone 14</div><div class="download-type">PNG</div></div><span class="download-arrow">↓</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="dl-section">
+    <div class="dl-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dl-header-left"><span class="dl-header-title">App Videos</span><span class="dl-header-count">5 files</span></div>
+      <span class="dl-header-arrow">&#9662;</span>
+    </div>
+    <div class="dl-body">
+      <div class="download-grid">
+        <a class="download-item" href="Videos/Opal_Homepage.mp4" download><div><div class="download-label">Opal Homepage</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Videos/Opal_Block_Screens.mov" download><div><div class="download-label">Block Screens</div><div class="download-type">MOV</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Videos/Opal_For_Schools.mp4" download><div><div class="download-label">Opal for Schools</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Videos/Opal_Friends.mp4" download><div><div class="download-label">Opal Friends</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Videos/Opal_Widget.mp4" download><div><div class="download-label">Opal Widget</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
       </div>
     </div>
   </div>
@@ -841,7 +925,7 @@
 
 <!-- CONTACT -->
 <section id="contact" style="padding-bottom:60px;">
-  <div class="section-label">10 — Contact</div>
+  <div class="section-label">11 — Contact</div>
   <h2>Questions?</h2>
   <div class="contact-card">
     <div>
@@ -857,6 +941,21 @@
 <footer>© Opal — The Focus Company</footer>
 
 <script>
+// Force all videos to show a preview frame
+document.querySelectorAll('.video-card video').forEach(video => {
+  const seekTime = video.src.includes('Widget') ? 3 : 1;
+  video.addEventListener('loadeddata', () => { video.currentTime = seekTime; });
+  if (video.readyState >= 2) video.currentTime = seekTime;
+});
+
+// Toggle video play/pause
+function togglePlay(card) {
+  const video = card.querySelector('video');
+  if (!video) return;
+  if (video.paused) { video.play().catch(() => {}); }
+  else { video.pause(); video.currentTime = video.src.includes('Widget') ? 3 : 1; }
+}
+
 // Active pill on scroll
 const pills = document.querySelectorAll('.nav-bar a[data-section]');
 const sections = document.querySelectorAll('section[id]');
