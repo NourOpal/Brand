@@ -226,10 +226,11 @@
   }
   .press-mention:hover { border-color: var(--border-hover); }
   .press-mention-pub {
-    font-size: 11px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--dim); margin-bottom: 8px;
+    margin-bottom: 14px;
+    height: 24px;
+    display: flex; align-items: center;
   }
+  .press-mention-pub svg { height: 100%; width: auto; }
   .press-mention-title {
     font-size: 15px; font-weight: 600;
     color: var(--white); line-height: 1.4;
@@ -462,11 +463,11 @@
 
     <div class="press-mention-grid">
       <a class="press-mention" href="https://www.nytimes.com/wirecutter/reviews/break-up-with-your-phone/" target="_blank">
-        <div class="press-mention-pub">The New York Times</div>
+        <div class="press-mention-pub"><svg viewBox="0 0 184 26" fill="none" xmlns="http://www.w3.org/2000/svg"><text x="0" y="21" fill="#888" font-family="'Times New Roman',Georgia,serif" font-size="22" font-weight="700" letter-spacing="-0.5">The New York Times</text></svg></div>
         <div class="press-mention-title">Everything You Need to Break Up With Your Phone</div>
       </a>
       <a class="press-mention" href="https://www.newyorker.com/culture/infinite-scroll/gentle-parenting-my-smartphone-addiction" target="_blank">
-        <div class="press-mention-pub">The New Yorker</div>
+        <div class="press-mention-pub"><svg viewBox="0 0 150 26" fill="none" xmlns="http://www.w3.org/2000/svg"><text x="0" y="21" fill="#888" font-family="'Times New Roman',Georgia,serif" font-size="22" font-style="italic" letter-spacing="-0.3">The New Yorker</text></svg></div>
         <div class="press-mention-title">Gentle Parenting My Smartphone Addiction</div>
       </a>
     </div>
