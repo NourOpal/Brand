@@ -572,14 +572,20 @@
 <script>
 // Force all videos to show a preview frame
 document.querySelectorAll('.video-card video').forEach(video => {
-  // Seek further into videos that start with black frames
-  const seekTime = video.src.includes('Widget') ? 3 : 1;
-  video.addEventListener('loadeddata', () => {
-    video.currentTime = seekTime;
+  const src = video.src || video.querySelector('source')?.src || '';
+  // Videos that start with black frames need a later seek
+  let seekTime = 1;
+  if (src.includes('Widget')) seekTime = 3;
+  else if (src.includes('Clip_2')) seekTime = 3;
+
+  function seekToPreview() { video.currentTime = seekTime; }
+
+  video.addEventListener('loadeddata', seekToPreview);
+  video.addEventListener('error', () => {
+    // Retry loading on error
+    video.load();
   });
-  if (video.readyState >= 2) {
-    video.currentTime = seekTime;
-  }
+  if (video.readyState >= 2) seekToPreview();
 });
 
 // Toggle video play/pause on click
@@ -590,7 +596,11 @@ function togglePlay(card) {
     video.play().catch(() => {});
   } else {
     video.pause();
-    video.currentTime = 0.5;
+    const src = video.src || '';
+    let seekTime = 1;
+    if (src.includes('Widget')) seekTime = 3;
+    else if (src.includes('Clip_2')) seekTime = 3;
+    video.currentTime = seekTime;
   }
 }
 
