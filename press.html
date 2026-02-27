@@ -213,27 +213,32 @@
   /* ── Press Mentions ── */
   .press-mention-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
   }
   .press-mention {
     border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 24px 28px;
+    border-radius: 16px;
+    padding: 28px;
     text-decoration: none;
     transition: border-color 0.2s;
-    display: block;
+    display: flex; flex-direction: column;
   }
   .press-mention:hover { border-color: var(--border-hover); }
   .press-mention-pub {
-    margin-bottom: 14px;
-    height: 20px;
+    margin-bottom: 16px;
+    height: 18px;
     display: flex; align-items: center;
   }
-  .press-mention-pub img { height: 100%; width: auto; opacity: 0.5; }
+  .press-mention-pub img { height: 100%; width: auto; opacity: 0.45; }
   .press-mention-title {
     font-size: 15px; font-weight: 600;
-    color: var(--white); line-height: 1.4;
+    color: var(--white); line-height: 1.45;
+    flex: 1;
+  }
+  .press-mention-date {
+    font-size: 12px; color: var(--dim);
+    margin-top: 12px;
   }
 
   /* ── Contact Bar ── */
@@ -308,6 +313,7 @@
     .contact-btn-sm { margin-left: 0; }
     .press-release-item { flex-direction: column; align-items: flex-start; gap: 12px; }
     .press-mention-grid { grid-template-columns: 1fr; }
+    .press-mention { padding: 22px; }
   }
 </style>
 </head>
@@ -427,58 +433,48 @@
 
 <div class="divider"></div>
 
-<!-- PRESS -->
+<!-- COVERAGE -->
 <section id="releases">
-  <div class="section-label">From the Blog</div>
-  <h2>Press Releases</h2>
-  <p class="section-desc">Official announcements from the Opal team.</p>
+  <div class="section-label">Coverage</div>
+  <h2>In the Press</h2>
+  <p class="section-desc">Official announcements and featured coverage.</p>
 
-  <div>
-    <div class="press-release-item">
-      <div>
-        <div class="press-release-title">We Don't Need to Fear AI Taking Our Jobs. We Need to Fear It Taking Our Attention.</div>
-        <div class="press-release-date">January 2026 · Kenneth Schlenker</div>
-      </div>
-      <a class="press-release-link" href="https://www.opal.so/blog/ai-attention-fear" target="_blank">Read →</a>
-    </div>
-    <div class="press-release-item">
-      <div>
-        <div class="press-release-title">Schools Use Opal to Fight Addictive Apps — A Smarter Phone Policy for Education</div>
-        <div class="press-release-date">January 2026 · Kenneth Schlenker</div>
-      </div>
-      <a class="press-release-link" href="https://www.opal.so/blog/opal-for-schools-2025" target="_blank">Read →</a>
-    </div>
-    <div class="press-release-item">
-      <div>
-        <div class="press-release-title">Opal Named Apple Design Award Finalist — A Big Win for Focus</div>
-        <div class="press-release-date">June 2025</div>
-      </div>
-      <a class="press-release-link" href="https://www.opal.so/blog/apple-design-award-finalist" target="_blank">Read →</a>
-    </div>
+  <div class="sub-label">From Opal</div>
+  <div class="press-mention-grid" style="margin-bottom:48px;">
+    <a class="press-mention" href="https://www.opal.so/blog/ai-attention-fear" target="_blank">
+      <div class="press-mention-pub"><img src="Opal_White.png" alt="Opal" style="height:16px;"></div>
+      <div class="press-mention-title">We Don't Need to Fear AI Taking Our Jobs. We Need to Fear It Taking Our Attention.</div>
+      <div class="press-mention-date">January 2026</div>
+    </a>
+    <a class="press-mention" href="https://www.opal.so/blog/opal-for-schools-2025" target="_blank">
+      <div class="press-mention-pub"><img src="Opal_White.png" alt="Opal" style="height:16px;"></div>
+      <div class="press-mention-title">Schools Use Opal to Fight Addictive Apps — A Smarter Phone Policy for Education</div>
+      <div class="press-mention-date">January 2026</div>
+    </a>
+    <a class="press-mention" href="https://www.opal.so/blog/apple-design-award-finalist" target="_blank">
+      <div class="press-mention-pub"><img src="Opal_White.png" alt="Opal" style="height:16px;"></div>
+      <div class="press-mention-title">Opal Named Apple Design Award Finalist — A Big Win for Focus</div>
+      <div class="press-mention-date">June 2025</div>
+    </a>
   </div>
 
-  <div style="margin-top:64px;">
-    <div class="sub-label">Opal in the Press</div>
-    <p class="section-desc" style="margin-bottom:28px;">Featured coverage from leading publications.</p>
-
-    <div class="press-mention-grid">
-      <a class="press-mention" href="https://www.nytimes.com/wirecutter/reviews/break-up-with-your-phone/" target="_blank">
-        <div class="press-mention-pub"><img src="newyorktimes.png" alt="The New York Times"></div>
-        <div class="press-mention-title">Everything You Need to Break Up With Your Phone</div>
-      </a>
-      <a class="press-mention" href="https://www.newyorker.com/culture/infinite-scroll/gentle-parenting-my-smartphone-addiction" target="_blank">
-        <div class="press-mention-pub"><img src="newyorker.png" alt="The New Yorker"></div>
-        <div class="press-mention-title">Gentle Parenting My Smartphone Addiction</div>
-      </a>
-      <a class="press-mention" href="https://www.telegraph.co.uk/money/consumer-affairs/im-spending-100-to-block-social-media/" target="_blank">
-        <div class="press-mention-pub"><img src="telegraph.png" alt="The Telegraph"></div>
-        <div class="press-mention-title">I'm Spending £100 to Block Social Media</div>
-      </a>
-    </div>
-
-    <div style="margin-top:24px;">
-      <a href="https://www.opal.so/about" target="_blank" style="color:var(--secondary);font-size:14px;font-weight:500;text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px;">See all press mentions on our story page →</a>
-    </div>
+  <div class="sub-label">Featured In</div>
+  <div class="press-mention-grid">
+    <a class="press-mention" href="https://www.nytimes.com/wirecutter/reviews/break-up-with-your-phone/" target="_blank">
+      <div class="press-mention-pub"><img src="newyorktimes.png" alt="The New York Times"></div>
+      <div class="press-mention-title">Everything You Need to Break Up With Your Phone</div>
+    </a>
+    <a class="press-mention" href="https://www.newyorker.com/culture/infinite-scroll/gentle-parenting-my-smartphone-addiction" target="_blank">
+      <div class="press-mention-pub"><img src="newyorker.png" alt="The New Yorker"></div>
+      <div class="press-mention-title">Gentle Parenting My Smartphone Addiction</div>
+    </a>
+    <a class="press-mention" href="https://www.telegraph.co.uk/money/consumer-affairs/im-spending-100-to-block-social-media/" target="_blank">
+      <div class="press-mention-pub"><img src="telegraph.png" alt="The Telegraph"></div>
+      <div class="press-mention-title">I'm Spending £100 to Block Social Media</div>
+    </a>
+  </div>
+  <div style="margin-top:24px;">
+    <a href="https://www.opal.so/about" target="_blank" style="color:var(--secondary);font-size:14px;font-weight:500;text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px;">See all press mentions →</a>
   </div>
 </section>
 
