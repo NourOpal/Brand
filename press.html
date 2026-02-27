@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opal — Press Kit</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="App_Icon.png">
+<link rel="shortcut icon" href="favicon.png">
+<style>
+  @font-face { font-family: 'SF Pro Text'; src: url('SF-Pro-Text-Light.otf') format('opentype'); font-weight: 300; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'SF Pro Text'; src: url('SF-Pro-Text-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'SF Pro Text'; src: url('SF-Pro-Text-Medium.otf') format('opentype'); font-weight: 500; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'SF Pro Text'; src: url('SF-Pro-Text-Semibold.otf') format('opentype'); font-weight: 600; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'SF Pro Text'; src: url('SF-Pro-Text-Bold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --white: #FFFFFF;
+    --secondary: #888;
+    --dim: #555;
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.2);
+  }
+
+  body {
+    background: #000;
+    color: var(--white);
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; justify-content: center;
+    padding: 16px 24px;
+  }
+  .nav-bar {
+    display: flex; align-items: center; gap: 4px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 100px;
+    padding: 5px 6px;
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+  }
+  .nav-bar::-webkit-scrollbar { display: none; }
+  .nav-bar .nav-logo {
+    display: flex; align-items: center;
+    padding: 0 16px 0 14px;
+    flex-shrink: 0;
+  }
+  .nav-bar .nav-logo img { height: 18px; width: auto; display: block; }
+  .nav-bar a {
+    display: block;
+    color: rgba(255,255,255,0.45); text-decoration: none;
+    font-size: 14px; font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 100px;
+    white-space: nowrap;
+    transition: color 0.3s ease, background 0.3s ease;
+  }
+  .nav-bar a:hover { color: var(--white); }
+  .nav-bar a.active {
+    color: var(--white);
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* ── Layout ── */
+  section {
+    padding: 110px 72px;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  .divider {
+    max-width: 1440px; margin: 0 auto;
+    height: 1px; background: var(--border);
+    margin-left: 72px; margin-right: 72px;
+  }
+  .section-label {
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--dim); margin-bottom: 16px;
+  }
+  h2 {
+    font-size: 40px; font-weight: 700;
+    letter-spacing: -0.03em; margin-bottom: 16px;
+  }
+  .section-desc {
+    font-size: 17px; color: var(--secondary);
+    max-width: 580px; line-height: 1.7; margin-bottom: 52px;
+  }
+  .sub-label {
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--dim); margin-bottom: 18px;
+  }
+
+  /* ── Hero ── */
+  #hero { padding-top: 130px; padding-bottom: 110px; }
+  .hero-label {
+    font-size: 14px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--dim); margin-bottom: 30px;
+  }
+  h1 {
+    font-size: clamp(48px, 6.5vw, 76px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    margin-bottom: 28px;
+  }
+  .gradient-text {
+    background: linear-gradient(135deg, #fff 0%, #A9CBFF 50%, #E2C9FF 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── About Box ── */
+  .about-box {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 720px;
+  }
+  .about-box p {
+    font-size: 16px; color: var(--secondary);
+    line-height: 1.8; font-weight: 400;
+  }
+  .about-box a { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
+  .about-box a:hover { opacity: 0.7; }
+
+  /* ── Video Cards ── */
+  .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+  .video-card {
+    border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--border);
+    background: #0a0a0a;
+    cursor: pointer;
+  }
+  .video-card video {
+    width: 100%; aspect-ratio: 16/9;
+    object-fit: cover; display: block;
+    background: #111;
+  }
+  .video-card-info {
+    padding: 16px 18px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .video-card-name { font-size: 14px; font-weight: 600; color: var(--white); }
+  .video-card-type { font-size: 11px; color: var(--dim); margin-top: 2px; }
+  .dl-btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 11px; font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .dl-btn.on-dark {
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.4);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .dl-btn.on-dark:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+  /* ── Photo Grid ── */
+  .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .photo-card {
+    border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--border);
+    position: relative;
+    aspect-ratio: 3/4;
+  }
+  .photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo-card .card-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 14px 16px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    display: flex; align-items: center; justify-content: space-between;
+    opacity: 0; transition: opacity 0.2s;
+  }
+  .photo-card:hover .card-overlay { opacity: 1; }
+  .card-overlay-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.6); }
+
+  /* ── Press Releases ── */
+  .press-release-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .press-release-item:last-child { border-bottom: none; }
+  .press-release-title { font-size: 16px; font-weight: 600; color: var(--white); }
+  .press-release-date { font-size: 13px; color: var(--dim); margin-top: 4px; }
+  .press-release-link {
+    font-size: 13px; font-weight: 600;
+    color: var(--secondary);
+    text-decoration: none;
+    padding: 8px 18px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    transition: border-color 0.2s, color 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .press-release-link:hover { border-color: var(--border-hover); color: var(--white); }
+
+  /* ── Contact Bar ── */
+  .press-contact-bar {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .press-contact-bar p { font-size: 15px; color: var(--secondary); }
+  .press-contact-bar a.contact-link { color: var(--white); text-decoration: none; font-weight: 600; }
+  .press-contact-bar a.contact-link:hover { opacity: 0.7; }
+  .contact-btn-sm {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 22px;
+    background: white; color: black;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 13px; font-weight: 700;
+    flex-shrink: 0; margin-left: 32px;
+    transition: opacity 0.2s;
+  }
+  .contact-btn-sm:hover { opacity: 0.85; }
+
+  /* ── Downloads Accordion ── */
+  .dl-section { border-bottom: 1px solid var(--border); }
+  .dl-section:last-child { border-bottom: none; }
+  .dl-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 0; cursor: pointer; user-select: none;
+  }
+  .dl-header-left { display: flex; align-items: center; gap: 14px; }
+  .dl-header-title { font-size: 16px; font-weight: 600; color: var(--white); }
+  .dl-header-count { font-size: 13px; color: var(--dim); }
+  .dl-header-arrow { font-size: 14px; color: var(--dim); transition: transform 0.2s; }
+  .dl-section.open .dl-header-arrow { transform: rotate(180deg); }
+  .dl-body { display: none; padding-bottom: 20px; }
+  .dl-section.open .dl-body { display: block; }
+  .download-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 8px;
+  }
+  .download-item {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .download-item:hover { border-color: var(--border-hover); }
+  .download-label { font-size: 15px; font-weight: 600; color: var(--white); }
+  .download-type { font-size: 12px; color: var(--dim); margin-top: 2px; }
+  .download-arrow { color: var(--dim); font-size: 18px; }
+
+  footer {
+    text-align: center; padding: 44px;
+    font-size: 11px; color: rgba(255,255,255,0.12);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    section { padding: 64px 24px; }
+    nav { padding: 10px 16px; }
+    .nav-bar a { font-size: 12px; padding: 6px 14px; }
+    .divider { margin-left: 24px; margin-right: 24px; }
+    h2 { font-size: 32px; }
+    .video-grid { grid-template-columns: 1fr; }
+    .photo-grid { grid-template-columns: repeat(2, 1fr); }
+    .press-contact-bar { flex-direction: column; gap: 20px; text-align: center; }
+    .contact-btn-sm { margin-left: 0; }
+    .press-release-item { flex-direction: column; align-items: flex-start; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-bar" id="navPills">
+    <a href="index.html" class="nav-logo"><img src="Opal_White.png" alt="Opal"></a>
+    <a href="#about" data-section="about">About</a>
+    <a href="#videos" data-section="videos">App Videos</a>
+    <a href="#kenneth" data-section="kenneth">Kenneth</a>
+    <a href="#olivia" data-section="olivia">Olivia</a>
+    <a href="#releases" data-section="releases">Releases</a>
+    <a href="#downloads" data-section="downloads">Download</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-label"><a href="index.html" style="color:inherit;text-decoration:none;">Brand Kit</a> / Press Kit</div>
+  <h1><span class="gradient-text">Press Kit</span></h1>
+  <p style="font-size:19px;color:var(--secondary);max-width:560px;margin-top:28px;line-height:1.7;">Resources for journalists, writers, and media partners covering Opal. Download headshots, app videos, and press materials.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <h2>About Opal</h2>
+  <div class="about-box">
+    <p>Opal is the #1 Screen Time app on the App Store. We build tools that help people and families focus on what matters — less scrolling, more living. Winner of an Apple Design Award. Trusted by millions of users worldwide.</p>
+    <p style="margin-top:16px;">Learn more at <a href="https://www.opal.so/about" target="_blank">opal.so/about</a></p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- APP VIDEOS -->
+<section id="videos">
+  <div class="section-label">App in Motion</div>
+  <h2>Product Videos</h2>
+  <p class="section-desc">Motion videos showcasing Opal's key features. Click to play, hover to preview. Download for use in stories, reviews, or social.</p>
+
+  <div class="video-grid">
+    <div class="video-card" onclick="togglePlay(this)">
+      <video src="Videos/Opal_Homepage.mp4#t=0.5" preload="metadata" muted playsinline></video>
+      <div class="video-card-info">
+        <div><div class="video-card-name">Opal Homepage</div><div class="video-card-type">MP4</div></div>
+        <a class="dl-btn on-dark" href="Videos/Opal_Homepage.mp4" download onclick="event.stopPropagation()">↓</a>
+      </div>
+    </div>
+    <div class="video-card" onclick="togglePlay(this)">
+      <video src="Videos/Opal_Block_Screens.mov#t=0.5" preload="metadata" muted playsinline></video>
+      <div class="video-card-info">
+        <div><div class="video-card-name">Block Screens</div><div class="video-card-type">MOV</div></div>
+        <a class="dl-btn on-dark" href="Videos/Opal_Block_Screens.mov" download onclick="event.stopPropagation()">↓</a>
+      </div>
+    </div>
+    <div class="video-card" onclick="togglePlay(this)">
+      <video src="Videos/Opal_For_Schools.mp4#t=0.5" preload="metadata" muted playsinline></video>
+      <div class="video-card-info">
+        <div><div class="video-card-name">Opal for Schools</div><div class="video-card-type">MP4</div></div>
+        <a class="dl-btn on-dark" href="Videos/Opal_For_Schools.mp4" download onclick="event.stopPropagation()">↓</a>
+      </div>
+    </div>
+    <div class="video-card" onclick="togglePlay(this)">
+      <video src="Videos/Opal_Friends.mp4#t=0.5" preload="metadata" muted playsinline></video>
+      <div class="video-card-info">
+        <div><div class="video-card-name">Opal Friends</div><div class="video-card-type">MP4</div></div>
+        <a class="dl-btn on-dark" href="Videos/Opal_Friends.mp4" download onclick="event.stopPropagation()">↓</a>
+      </div>
+    </div>
+    <div class="video-card" onclick="togglePlay(this)">
+      <video src="Videos/Opal_Widget.mp4#t=0.5" preload="metadata" muted playsinline></video>
+      <div class="video-card-info">
+        <div><div class="video-card-name">Opal Widget</div><div class="video-card-type">MP4</div></div>
+        <a class="dl-btn on-dark" href="Videos/Opal_Widget.mp4" download onclick="event.stopPropagation()">↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- KENNETH -->
+<section id="kenneth">
+  <div class="section-label">Founder</div>
+  <h2>Kenneth Schlenker</h2>
+  <p class="section-desc">Founder & CEO of Opal. Official headshots and portraits — high resolution, ready for editorial use. Hover to download.</p>
+
+  <div class="photo-grid">
+    <div class="photo-card"><img src="Press/Kenneth_1.jpg" alt="Kenneth Schlenker"><div class="card-overlay"><span class="card-overlay-label">Kenneth — 1</span><a class="dl-btn on-dark" href="Press/Kenneth_1.jpg" download>↓ JPG</a></div></div>
+    <div class="photo-card"><img src="Press/Kenneth_2.jpg" alt="Kenneth Schlenker"><div class="card-overlay"><span class="card-overlay-label">Kenneth — 2</span><a class="dl-btn on-dark" href="Press/Kenneth_2.jpg" download>↓ JPG</a></div></div>
+    <div class="photo-card"><img src="Press/Kenneth_3.jpg" alt="Kenneth Schlenker"><div class="card-overlay"><span class="card-overlay-label">Kenneth — 3</span><a class="dl-btn on-dark" href="Press/Kenneth_3.jpg" download>↓ JPG</a></div></div>
+    <div class="photo-card"><img src="Press/Kenneth_4.jpg" alt="Kenneth Schlenker"><div class="card-overlay"><span class="card-overlay-label">Kenneth — 4</span><a class="dl-btn on-dark" href="Press/Kenneth_4.jpg" download>↓ JPG</a></div></div>
+    <div class="photo-card"><img src="Press/Kenneth_5.jpg" alt="Kenneth Schlenker"><div class="card-overlay"><span class="card-overlay-label">Kenneth — 5</span><a class="dl-btn on-dark" href="Press/Kenneth_5.jpg" download>↓ JPG</a></div></div>
+    <div class="photo-card"><img src="Press/Kenneth_6.jpg" alt="Kenneth Schlenker"><div class="card-overlay"><span class="card-overlay-label">Kenneth — 6</span><a class="dl-btn on-dark" href="Press/Kenneth_6.jpg" download>↓ JPG</a></div></div>
+    <div class="photo-card"><img src="Press/Kenneth_7.jpg" alt="Kenneth Schlenker"><div class="card-overlay"><span class="card-overlay-label">Kenneth — 7</span><a class="dl-btn on-dark" href="Press/Kenneth_7.jpg" download>↓ JPG</a></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- OLIVIA UNPLUGGED -->
+<section id="olivia">
+  <div class="section-label">Content Series</div>
+  <h2>Olivia Unplugged</h2>
+  <p class="section-desc">Video content from the Olivia Unplugged series. Click to play, download for editorial or social use.</p>
+
+  <div class="video-grid">
+    <div class="video-card" onclick="togglePlay(this)">
+      <video src="Press/Olivia_Life_Interesting.mp4#t=0.5" preload="metadata" muted playsinline></video>
+      <div class="video-card-info">
+        <div><div class="video-card-name">Make Your Life Interesting Again</div><div class="video-card-type">MP4</div></div>
+        <a class="dl-btn on-dark" href="Press/Olivia_Life_Interesting.mp4" download onclick="event.stopPropagation()">↓</a>
+      </div>
+    </div>
+    <div class="video-card" onclick="togglePlay(this)">
+      <video src="Press/Olivia_Personal_Curriculum.mp4#t=0.5" preload="metadata" muted playsinline></video>
+      <div class="video-card-info">
+        <div><div class="video-card-name">Personal Curriculum</div><div class="video-card-type">MP4</div></div>
+        <a class="dl-btn on-dark" href="Press/Olivia_Personal_Curriculum.mp4" download onclick="event.stopPropagation()">↓</a>
+      </div>
+    </div>
+    <div class="video-card" onclick="togglePlay(this)">
+      <video src="Press/Olivia_Clip_1.mp4#t=0.5" preload="metadata" muted playsinline></video>
+      <div class="video-card-info">
+        <div><div class="video-card-name">Olivia — Clip 1</div><div class="video-card-type">MP4</div></div>
+        <a class="dl-btn on-dark" href="Press/Olivia_Clip_1.mp4" download onclick="event.stopPropagation()">↓</a>
+      </div>
+    </div>
+    <div class="video-card" onclick="togglePlay(this)">
+      <video src="Press/Olivia_Clip_2.mp4#t=0.5" preload="metadata" muted playsinline></video>
+      <div class="video-card-info">
+        <div><div class="video-card-name">Olivia — Clip 2</div><div class="video-card-type">MP4</div></div>
+        <a class="dl-btn on-dark" href="Press/Olivia_Clip_2.mp4" download onclick="event.stopPropagation()">↓</a>
+      </div>
+    </div>
+    <div class="video-card" onclick="togglePlay(this)">
+      <video src="Press/Olivia_Clip_3.mp4#t=0.5" preload="metadata" muted playsinline></video>
+      <div class="video-card-info">
+        <div><div class="video-card-name">Olivia — Clip 3</div><div class="video-card-type">MP4</div></div>
+        <a class="dl-btn on-dark" href="Press/Olivia_Clip_3.mp4" download onclick="event.stopPropagation()">↓</a>
+      </div>
+    </div>
+    <div class="video-card" onclick="togglePlay(this)">
+      <video src="Press/Olivia_Clip_4.mp4#t=0.5" preload="metadata" muted playsinline></video>
+      <div class="video-card-info">
+        <div><div class="video-card-name">Olivia — Clip 4</div><div class="video-card-type">MP4</div></div>
+        <a class="dl-btn on-dark" href="Press/Olivia_Clip_4.mp4" download onclick="event.stopPropagation()">↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRESS RELEASES -->
+<section id="releases">
+  <div class="section-label">Archive</div>
+  <h2>Press Releases</h2>
+  <p class="section-desc">Official announcements and press coverage.</p>
+
+  <div>
+    <div class="press-release-item">
+      <div>
+        <div class="press-release-title">Opal Launches Opal for Schools</div>
+        <div class="press-release-date">October 2022</div>
+      </div>
+      <a class="press-release-link" href="https://www.opal.so/blog" target="_blank">Read →</a>
+    </div>
+    <div class="press-release-item">
+      <div>
+        <div class="press-release-title">Opal Wins Apple Design Award</div>
+        <div class="press-release-date">June 2022</div>
+      </div>
+      <a class="press-release-link" href="https://www.opal.so/blog" target="_blank">Read →</a>
+    </div>
+    <div class="press-release-item">
+      <div>
+        <div class="press-release-title">Opal Raises $4.3M Seed Round</div>
+        <div class="press-release-date">December 2021</div>
+      </div>
+      <a class="press-release-link" href="https://www.opal.so/blog" target="_blank">Read →</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DOWNLOADS -->
+<section id="downloads">
+  <div class="section-label">Download</div>
+  <h2>All Press Assets</h2>
+  <p class="section-desc">Download individual files by category.</p>
+
+  <div class="dl-section open">
+    <div class="dl-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dl-header-left"><span class="dl-header-title">Kenneth — Headshots</span><span class="dl-header-count">7 files</span></div>
+      <span class="dl-header-arrow">&#9662;</span>
+    </div>
+    <div class="dl-body">
+      <div class="download-grid">
+        <a class="download-item" href="Press/Kenneth_1.jpg" download><div><div class="download-label">Kenneth 1</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Kenneth_2.jpg" download><div><div class="download-label">Kenneth 2</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Kenneth_3.jpg" download><div><div class="download-label">Kenneth 3</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Kenneth_4.jpg" download><div><div class="download-label">Kenneth 4</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Kenneth_5.jpg" download><div><div class="download-label">Kenneth 5</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Kenneth_6.jpg" download><div><div class="download-label">Kenneth 6</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Kenneth_7.jpg" download><div><div class="download-label">Kenneth 7</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="dl-section">
+    <div class="dl-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dl-header-left"><span class="dl-header-title">App Videos</span><span class="dl-header-count">5 files</span></div>
+      <span class="dl-header-arrow">&#9662;</span>
+    </div>
+    <div class="dl-body">
+      <div class="download-grid">
+        <a class="download-item" href="Videos/Opal_Homepage.mp4" download><div><div class="download-label">Opal Homepage</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Videos/Opal_Block_Screens.mov" download><div><div class="download-label">Block Screens</div><div class="download-type">MOV</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Videos/Opal_For_Schools.mp4" download><div><div class="download-label">Opal for Schools</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Videos/Opal_Friends.mp4" download><div><div class="download-label">Opal Friends</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Videos/Opal_Widget.mp4" download><div><div class="download-label">Opal Widget</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="dl-section">
+    <div class="dl-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dl-header-left"><span class="dl-header-title">Olivia Unplugged</span><span class="dl-header-count">6 files</span></div>
+      <span class="dl-header-arrow">&#9662;</span>
+    </div>
+    <div class="dl-body">
+      <div class="download-grid">
+        <a class="download-item" href="Press/Olivia_Life_Interesting.mp4" download><div><div class="download-label">Make Your Life Interesting Again</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Olivia_Personal_Curriculum.mp4" download><div><div class="download-label">Personal Curriculum</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Olivia_Clip_1.mp4" download><div><div class="download-label">Olivia Clip 1</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Olivia_Clip_2.mp4" download><div><div class="download-label">Olivia Clip 2</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Olivia_Clip_3.mp4" download><div><div class="download-label">Olivia Clip 3</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Olivia_Clip_4.mp4" download><div><div class="download-label">Olivia Clip 4</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section style="padding-bottom:60px;">
+  <div class="press-contact-bar">
+    <p>Press inquiries — <a class="contact-link" href="mailto:kenneth@opal.so">Kenneth Schlenker, CEO — kenneth@opal.so</a></p>
+    <a class="contact-btn-sm" href="mailto:kenneth@opal.so">Contact Press →</a>
+  </div>
+  <div style="text-align:center;margin-top:32px;">
+    <a href="index.html" style="color:var(--dim);font-size:13px;font-weight:500;text-decoration:none;">← Back to Brand Kit</a>
+  </div>
+</section>
+
+<footer>© Opal — The Focus Company</footer>
+
+<script>
+// Toggle video play/pause on click
+function togglePlay(card) {
+  const video = card.querySelector('video');
+  if (!video) return;
+  if (video.paused) {
+    video.play().catch(() => {});
+  } else {
+    video.pause();
+  }
+}
+
+// Active pill on scroll
+const pills = document.querySelectorAll('.nav-bar a[data-section]');
+const sections = document.querySelectorAll('section[id]');
+
+function updateActive() {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.id;
+  });
+  pills.forEach(p => {
+    p.classList.toggle('active', p.getAttribute('data-section') === current);
+    if (p.classList.contains('active')) {
+      p.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  });
+}
+window.addEventListener('scroll', updateActive, { passive: true });
+updateActive();
+
+// Smooth scroll for section links
+pills.forEach(p => {
+  p.addEventListener('click', e => {
+    const href = p.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
