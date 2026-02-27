@@ -302,7 +302,7 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-label"><a href="index.html" style="color:inherit;text-decoration:none;">Brand Kit</a> / Press Kit</div>
-  <h1><span class="gradient-text">Press Kit</span></h1>
+  <h1><span style="background:linear-gradient(135deg,#ECB8FF 0%,#FFD6AA 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Press Kit</span></h1>
   <p style="font-size:19px;color:var(--secondary);max-width:560px;margin-top:28px;line-height:1.7;">Resources for journalists, writers, and media partners covering Opal. Download headshots, app videos, and press materials.</p>
 </section>
 
@@ -571,12 +571,13 @@
 <script>
 // Force all videos to show a preview frame
 document.querySelectorAll('.video-card video').forEach(video => {
+  // Seek further into videos that start with black frames
+  const seekTime = video.src.includes('Widget') ? 3 : 1;
   video.addEventListener('loadeddata', () => {
-    video.currentTime = 0.5;
+    video.currentTime = seekTime;
   });
-  // Fallback: if loadeddata already fired
   if (video.readyState >= 2) {
-    video.currentTime = 0.5;
+    video.currentTime = seekTime;
   }
 });
 
