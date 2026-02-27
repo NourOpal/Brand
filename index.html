@@ -8,7 +8,9 @@
 <link rel="apple-touch-icon" href="App_Icon.png">
 <link rel="shortcut icon" href="favicon.png">
 <style>
-  @font-face { font-family: 'SF Pro Text'; src: url('SF-Pro-Text-Medium.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'SF Pro Text'; src: url('SF-Pro-Text-Light.otf') format('opentype'); font-weight: 300; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'SF Pro Text'; src: url('SF-Pro-Text-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'SF Pro Text'; src: url('SF-Pro-Text-Medium.otf') format('opentype'); font-weight: 500; font-style: normal; font-display: swap; }
   @font-face { font-family: 'SF Pro Text'; src: url('SF-Pro-Text-Semibold.otf') format('opentype'); font-weight: 600; font-style: normal; font-display: swap; }
   @font-face { font-family: 'SF Pro Text'; src: url('SF-Pro-Text-Bold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
 
@@ -331,6 +333,108 @@
   }
   .note-box strong { color: var(--white); }
 
+  /* ── Press Section ── */
+  .press-about {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 36px;
+    margin-bottom: 48px;
+    max-width: 680px;
+  }
+  .press-about p {
+    font-size: 15px; color: var(--secondary);
+    line-height: 1.75; font-weight: 400;
+  }
+  .press-about a { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
+  .press-about a:hover { opacity: 0.7; }
+
+  .press-subsection { margin-bottom: 56px; }
+  .press-subsection:last-child { margin-bottom: 0; }
+  .press-sub-title {
+    font-size: 20px; font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .press-sub-desc {
+    font-size: 14px; color: var(--secondary);
+    margin-bottom: 24px; line-height: 1.6;
+  }
+
+  /* ── Video Cards ── */
+  .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+  .video-card {
+    border-radius: 14px; overflow: hidden;
+    border: 1px solid var(--border);
+    position: relative;
+    background: #0a0a0a;
+  }
+  .video-card video {
+    width: 100%; aspect-ratio: 16/9;
+    object-fit: cover; display: block;
+    background: #000;
+  }
+  .video-card-info {
+    padding: 14px 16px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .video-card-name { font-size: 13px; font-weight: 600; color: var(--white); }
+  .video-card-type { font-size: 10px; color: var(--dim); margin-top: 2px; }
+
+  /* ── Photo Grid (Kenneth) ── */
+  .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  .photo-card {
+    border-radius: 14px; overflow: hidden;
+    border: 1px solid var(--border);
+    position: relative;
+    aspect-ratio: 3/4;
+  }
+  .photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo-card .card-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 12px 14px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    display: flex; align-items: center; justify-content: space-between;
+    opacity: 0; transition: opacity 0.2s;
+  }
+  .photo-card:hover .card-overlay { opacity: 1; }
+
+  /* ── Press Releases ── */
+  .press-release-list { display: flex; flex-direction: column; gap: 0; }
+  .press-release-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .press-release-item:last-child { border-bottom: none; }
+  .press-release-title { font-size: 15px; font-weight: 600; color: var(--white); }
+  .press-release-date { font-size: 12px; color: var(--dim); margin-top: 3px; }
+  .press-release-link {
+    font-size: 12px; font-weight: 600;
+    color: var(--secondary);
+    text-decoration: none;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    transition: border-color 0.2s, color 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .press-release-link:hover { border-color: var(--border-hover); color: var(--white); }
+
+  .press-contact-bar {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 48px;
+  }
+  .press-contact-bar p { font-size: 14px; color: var(--secondary); }
+  .press-contact-bar a.contact-link {
+    color: var(--white); text-decoration: none;
+    font-weight: 600;
+  }
+  .press-contact-bar a.contact-link:hover { opacity: 0.7; }
+
   /* ── Downloads Accordion ── */
   .dl-section { border-bottom: 1px solid var(--border); }
   .dl-section:last-child { border-bottom: none; }
@@ -406,13 +510,16 @@
     .app-icon-row { flex-direction: column; align-items: flex-start; gap: 20px; }
     .screenshot-card { width: 150px; }
     .screenshot-card img { height: 260px; }
-    .nav-pills a { font-size: 11px; padding: 5px 12px; }
+    .video-grid { grid-template-columns: 1fr; }
+    .photo-grid { grid-template-columns: repeat(2, 1fr); }
+    .press-contact-bar { flex-direction: column; gap: 16px; text-align: center; }
+    .press-release-item { flex-direction: column; align-items: flex-start; gap: 10px; }
   }
 </style>
 </head>
 <body>
 
-<!-- ════════════ NAV ════════════ -->
+<!-- NAV -->
 <nav>
   <div class="nav-bar" id="navPills">
     <div class="nav-logo"><img src="Opal_White.png" alt="Opal"></div>
@@ -423,11 +530,12 @@
     <a href="#screenshots" data-section="screenshots">Screenshots</a>
     <a href="#assets" data-section="assets">Assets</a>
     <a href="#rules" data-section="rules">Rules</a>
+    <a href="#press" data-section="press">Press</a>
     <a href="#download" data-section="download">Download</a>
   </div>
 </nav>
 
-<!-- ════════════ HERO ════════════ -->
+<!-- HERO -->
 <section id="hero">
   <div class="hero-label">Partner Brand Kit</div>
   <h1>Opal<br><span class="gradient-text">Brand Kit</span></h1>
@@ -436,7 +544,7 @@
 
 <div class="divider"></div>
 
-<!-- ════════════ COLORS ════════════ -->
+<!-- COLORS -->
 <section id="colors">
   <div class="section-label">01 — Colors</div>
   <h2>Color System</h2>
@@ -450,21 +558,28 @@
     <div class="color-card"><div class="color-swatch" style="background:#3a3a3a;"></div><div class="color-info"><div class="color-name">Surfaces</div><div class="color-hex">#3A3A3A</div></div></div>
   </div>
 
-  <div class="sub-label" style="margin-top:28px;">Gradient Accents — App Only</div>
+  <div class="sub-label" style="margin-top:28px;">Text Gradient</div>
+  <div class="color-grid" style="margin-bottom:40px;">
+    <div class="color-card"><div class="color-swatch" style="background:linear-gradient(135deg,#BCBBC0,#FFFFFF);"></div><div class="color-info"><div class="color-name">Title Gradient</div><div class="color-hex">#BCBBC0 → #FFFFFF</div></div></div>
+  </div>
+
+  <div class="sub-label">Gradient Accents — App Only</div>
   <div class="color-grid">
     <div class="color-card"><div class="color-swatch" style="background:linear-gradient(135deg,#E2C9FF,#8CFFDD);"></div><div class="color-info"><div class="color-name">Gradient 01</div><div class="color-hex">#E2C9FF → #8CFFDD</div></div></div>
     <div class="color-card"><div class="color-swatch" style="background:linear-gradient(135deg,#A9CBFF,#B39AFF);"></div><div class="color-info"><div class="color-name">Gradient 02</div><div class="color-hex">#A9CBFF → #B39AFF</div></div></div>
     <div class="color-card"><div class="color-swatch" style="background:linear-gradient(135deg,#D4FF9C,#9EF9FF);"></div><div class="color-info"><div class="color-name">Gradient 03</div><div class="color-hex">#D4FF9C → #9EF9FF</div></div></div>
+    <div class="color-card"><div class="color-swatch" style="background:linear-gradient(135deg,#EDC9F2,#EDFF4A);"></div><div class="color-info"><div class="color-name">Gradient 04</div><div class="color-hex">#EDC9F2 → #EDFF4A</div></div></div>
+    <div class="color-card"><div class="color-swatch" style="background:linear-gradient(135deg,#ECB8FF,#FFD6AA);"></div><div class="color-info"><div class="color-name">Gradient 05</div><div class="color-hex">#ECB8FF → #FFD6AA</div></div></div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ════════════ TYPOGRAPHY ════════════ -->
+<!-- TYPOGRAPHY -->
 <section id="typography">
   <div class="section-label">02 — Typography</div>
   <h2>Type System</h2>
-  <p class="section-desc">SF Pro Text across all touchpoints. Match these styles when setting text alongside Opal assets.</p>
+  <p class="section-desc">SF Pro Text across all touchpoints. Five weights — Light to Bold — covering every use case from ambient labels to hero headlines.</p>
 
   <div class="type-sample">
     <div class="type-label">Bold — Headlines</div>
@@ -478,20 +593,32 @@
   </div>
   <div class="type-sample">
     <div class="type-label">Medium — Body</div>
-    <div style="font-size:16px;font-weight:400;line-height:1.65;color:var(--secondary);max-width:480px;">Opal helps you take control of your screen time and find your flow — without willpower, guilt, or tracking every tap.</div>
-    <div class="type-meta">SF Pro Text Medium · 400 · #BCBBC0</div>
+    <div style="font-size:16px;font-weight:500;line-height:1.65;color:var(--secondary);max-width:480px;">Opal helps you take control of your screen time and find your flow — without willpower, guilt, or tracking every tap.</div>
+    <div class="type-meta">SF Pro Text Medium · 500 · #BCBBC0</div>
+  </div>
+  <div class="type-sample">
+    <div class="type-label">Regular — Secondary Text</div>
+    <div style="font-size:15px;font-weight:400;line-height:1.65;color:var(--secondary);max-width:480px;">Used for supporting copy, descriptions, and extended reading. Comfortable weight for longer passages.</div>
+    <div class="type-meta">SF Pro Text Regular · 400 · #BCBBC0</div>
+  </div>
+  <div class="type-sample">
+    <div class="type-label">Light — Ambient & Display</div>
+    <div style="font-size:32px;font-weight:300;letter-spacing:-0.02em;line-height:1.2;color:rgba(255,255,255,0.7);">Time well spent</div>
+    <div class="type-meta">SF Pro Text Light · 300 · −0.02em · rgba(255,255,255,0.7)</div>
   </div>
 
   <div class="font-downloads">
     <a class="font-dl" href="SF-Pro-Text-Bold.otf" download><span>↓</span> Bold <span class="meta">OTF</span></a>
     <a class="font-dl" href="SF-Pro-Text-Semibold.otf" download><span>↓</span> Semibold <span class="meta">OTF</span></a>
     <a class="font-dl" href="SF-Pro-Text-Medium.otf" download><span>↓</span> Medium <span class="meta">OTF</span></a>
+    <a class="font-dl" href="SF-Pro-Text-Regular.otf" download><span>↓</span> Regular <span class="meta">OTF</span></a>
+    <a class="font-dl" href="SF-Pro-Text-Light.otf" download><span>↓</span> Light <span class="meta">OTF</span></a>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ════════════ LOGOS ════════════ -->
+<!-- LOGOS -->
 <section id="logos">
   <div class="section-label">03 — Logos</div>
   <h2>Logo Usage</h2>
@@ -540,7 +667,7 @@
 
 <div class="divider"></div>
 
-<!-- ════════════ APP ICON ════════════ -->
+<!-- APP ICON -->
 <section id="app-icon">
   <div class="section-label">04 — App Icon</div>
   <h2>App Icon</h2>
@@ -557,7 +684,7 @@
 
 <div class="divider"></div>
 
-<!-- ════════════ GEMS ════════════ -->
+<!-- GEMS -->
 <section id="gems">
   <div class="section-label">05 — Gems</div>
   <h2>Focus Gems</h2>
@@ -575,7 +702,7 @@
 
 <div class="divider"></div>
 
-<!-- ════════════ SCREENSHOTS ════════════ -->
+<!-- SCREENSHOTS -->
 <section id="screenshots">
   <div class="section-label">06 — Screenshots</div>
   <h2>App Screenshots</h2>
@@ -599,7 +726,7 @@
 
 <div class="divider"></div>
 
-<!-- ════════════ ASSETS ════════════ -->
+<!-- ASSETS -->
 <section id="assets">
   <div class="section-label">07 — Assets</div>
   <h2>Brand Imagery</h2>
@@ -638,7 +765,7 @@
 
 <div class="divider"></div>
 
-<!-- ════════════ RULES ════════════ -->
+<!-- RULES -->
 <section id="rules">
   <div class="section-label">08 — Rules</div>
   <h2>Do's & Don'ts</h2>
@@ -646,46 +773,200 @@
 
   <div class="rules-grid">
     <div class="rules-col do">
-      <h3>✓ Do</h3>
-      <div class="rule-item"><span class="rule-icon">✓</span> Use white logo on dark/black backgrounds</div>
-      <div class="rule-item"><span class="rule-icon">✓</span> Use black logo on white/light backgrounds</div>
-      <div class="rule-item"><span class="rule-icon">✓</span> Maintain clear space around the logo</div>
-      <div class="rule-item"><span class="rule-icon">✓</span> Match optical height in co-branded placements</div>
-      <div class="rule-item"><span class="rule-icon">✓</span> Display gems on black backgrounds only</div>
-      <div class="rule-item"><span class="rule-icon">✓</span> Use provided files in original format</div>
-      <div class="rule-item"><span class="rule-icon">✓</span> Refer to the app as "Opal" — capital O</div>
-      <div class="rule-item"><span class="rule-icon">✓</span> Reach out if you need a variation</div>
+      <h3>Do</h3>
+      <div class="rule-item"><span class="rule-icon">&#10003;</span> Use white logo on dark/black backgrounds</div>
+      <div class="rule-item"><span class="rule-icon">&#10003;</span> Use black logo on white/light backgrounds</div>
+      <div class="rule-item"><span class="rule-icon">&#10003;</span> Maintain clear space around the logo</div>
+      <div class="rule-item"><span class="rule-icon">&#10003;</span> Match optical height in co-branded placements</div>
+      <div class="rule-item"><span class="rule-icon">&#10003;</span> Display gems on black backgrounds only</div>
+      <div class="rule-item"><span class="rule-icon">&#10003;</span> Use provided files in original format</div>
+      <div class="rule-item"><span class="rule-icon">&#10003;</span> Refer to the app as "Opal" — capital O</div>
+      <div class="rule-item"><span class="rule-icon">&#10003;</span> Reach out if you need a variation</div>
     </div>
     <div class="rules-col dont">
-      <h3>✗ Don't</h3>
-      <div class="rule-item"><span class="rule-icon">✗</span> Place white logo on light backgrounds</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Place black logo on dark or busy photos</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Stretch, rotate, skew, or distort</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Apply shadows, glows, or effects</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Recolor beyond pure white or black</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Crop the logo or cut off elements</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Recreate the logo from scratch</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Use gradients as backgrounds</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Apply filters to any asset</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Overlay text on gem sculptures</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Screenshot or re-export from the app</div>
-      <div class="rule-item"><span class="rule-icon">✗</span> Imply endorsement beyond agreed scope</div>
+      <h3>Don't</h3>
+      <div class="rule-item"><span class="rule-icon">&#10007;</span> Place white logo on light backgrounds</div>
+      <div class="rule-item"><span class="rule-icon">&#10007;</span> Place black logo on dark or busy photos</div>
+      <div class="rule-item"><span class="rule-icon">&#10007;</span> Stretch, rotate, skew, or distort</div>
+      <div class="rule-item"><span class="rule-icon">&#10007;</span> Apply shadows, glows, or effects</div>
+      <div class="rule-item"><span class="rule-icon">&#10007;</span> Recolor beyond pure white or black</div>
+      <div class="rule-item"><span class="rule-icon">&#10007;</span> Crop the logo or cut off elements</div>
+      <div class="rule-item"><span class="rule-icon">&#10007;</span> Recreate the logo from scratch</div>
+      <div class="rule-item"><span class="rule-icon">&#10007;</span> Use gradients as backgrounds</div>
+      <div class="rule-item"><span class="rule-icon">&#10007;</span> Apply filters to any asset</div>
+      <div class="rule-item"><span class="rule-icon">&#10007;</span> Overlay text on gem sculptures</div>
+      <div class="rule-item"><span class="rule-icon">&#10007;</span> Screenshot or re-export from the app</div>
+      <div class="rule-item"><span class="rule-icon">&#10007;</span> Imply endorsement beyond agreed scope</div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ════════════ DOWNLOADS ════════════ -->
+<!-- PRESS -->
+<section id="press">
+  <div class="section-label">09 — Press</div>
+  <h2>Press Kit</h2>
+  <p class="section-desc">Resources for journalists, writers, and media partners covering Opal.</p>
+
+  <div class="press-about">
+    <p>Opal is the #1 Screen Time app on the App Store. We build tools that help people and families focus on what matters — less scrolling, more living. Winner of an Apple Design Award. Learn more at <a href="https://www.opal.so/about" target="_blank">opal.so/about</a>.</p>
+  </div>
+
+  <!-- App in Motion -->
+  <div class="press-subsection">
+    <div class="press-sub-title">App in Motion</div>
+    <div class="press-sub-desc">Product motion videos showcasing Opal's key features. Download for use in stories, reviews, or social.</div>
+    <div class="video-grid">
+      <div class="video-card">
+        <video src="Videos/Opal_Homepage.mp4" preload="metadata" muted playsinline></video>
+        <div class="video-card-info">
+          <div><div class="video-card-name">Opal Homepage</div><div class="video-card-type">MP4</div></div>
+          <a class="dl-btn on-dark" href="Videos/Opal_Homepage.mp4" download>↓</a>
+        </div>
+      </div>
+      <div class="video-card">
+        <video src="Videos/Opal_Block_Screens.mov" preload="metadata" muted playsinline></video>
+        <div class="video-card-info">
+          <div><div class="video-card-name">Block Screens</div><div class="video-card-type">MOV</div></div>
+          <a class="dl-btn on-dark" href="Videos/Opal_Block_Screens.mov" download>↓</a>
+        </div>
+      </div>
+      <div class="video-card">
+        <video src="Videos/Opal_For_Schools.mp4" preload="metadata" muted playsinline></video>
+        <div class="video-card-info">
+          <div><div class="video-card-name">Opal for Schools</div><div class="video-card-type">MP4</div></div>
+          <a class="dl-btn on-dark" href="Videos/Opal_For_Schools.mp4" download>↓</a>
+        </div>
+      </div>
+      <div class="video-card">
+        <video src="Videos/Opal_Friends.mp4" preload="metadata" muted playsinline></video>
+        <div class="video-card-info">
+          <div><div class="video-card-name">Opal Friends</div><div class="video-card-type">MP4</div></div>
+          <a class="dl-btn on-dark" href="Videos/Opal_Friends.mp4" download>↓</a>
+        </div>
+      </div>
+      <div class="video-card">
+        <video src="Videos/Opal_Widget.mp4" preload="metadata" muted playsinline></video>
+        <div class="video-card-info">
+          <div><div class="video-card-name">Opal Widget</div><div class="video-card-type">MP4</div></div>
+          <a class="dl-btn on-dark" href="Videos/Opal_Widget.mp4" download>↓</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kenneth -->
+  <div class="press-subsection">
+    <div class="press-sub-title">Kenneth Schlenker — Founder & CEO</div>
+    <div class="press-sub-desc">Official headshots and portraits. High-resolution, ready for editorial use.</div>
+    <div class="photo-grid">
+      <div class="photo-card"><img src="Press/Kenneth_1.jpg" alt="Kenneth Schlenker"><div class="card-overlay"><span class="card-overlay-label">Kenneth 1</span><a class="dl-btn on-dark" href="Press/Kenneth_1.jpg" download>↓</a></div></div>
+      <div class="photo-card"><img src="Press/Kenneth_2.jpg" alt="Kenneth Schlenker"><div class="card-overlay"><span class="card-overlay-label">Kenneth 2</span><a class="dl-btn on-dark" href="Press/Kenneth_2.jpg" download>↓</a></div></div>
+      <div class="photo-card"><img src="Press/Kenneth_3.jpg" alt="Kenneth Schlenker"><div class="card-overlay"><span class="card-overlay-label">Kenneth 3</span><a class="dl-btn on-dark" href="Press/Kenneth_3.jpg" download>↓</a></div></div>
+      <div class="photo-card"><img src="Press/Kenneth_4.jpg" alt="Kenneth Schlenker"><div class="card-overlay"><span class="card-overlay-label">Kenneth 4</span><a class="dl-btn on-dark" href="Press/Kenneth_4.jpg" download>↓</a></div></div>
+      <div class="photo-card"><img src="Press/Kenneth_5.jpg" alt="Kenneth Schlenker"><div class="card-overlay"><span class="card-overlay-label">Kenneth 5</span><a class="dl-btn on-dark" href="Press/Kenneth_5.jpg" download>↓</a></div></div>
+      <div class="photo-card"><img src="Press/Kenneth_6.jpg" alt="Kenneth Schlenker"><div class="card-overlay"><span class="card-overlay-label">Kenneth 6</span><a class="dl-btn on-dark" href="Press/Kenneth_6.jpg" download>↓</a></div></div>
+      <div class="photo-card"><img src="Press/Kenneth_7.jpg" alt="Kenneth Schlenker"><div class="card-overlay"><span class="card-overlay-label">Kenneth 7</span><a class="dl-btn on-dark" href="Press/Kenneth_7.jpg" download>↓</a></div></div>
+    </div>
+  </div>
+
+  <!-- Olivia Unplugged -->
+  <div class="press-subsection">
+    <div class="press-sub-title">Olivia Unplugged</div>
+    <div class="press-sub-desc">Video content from the Olivia Unplugged series.</div>
+    <div class="video-grid">
+      <div class="video-card">
+        <video src="Press/Olivia_Life_Interesting.mp4" preload="metadata" muted playsinline></video>
+        <div class="video-card-info">
+          <div><div class="video-card-name">Make Your Life Interesting Again</div><div class="video-card-type">MP4</div></div>
+          <a class="dl-btn on-dark" href="Press/Olivia_Life_Interesting.mp4" download>↓</a>
+        </div>
+      </div>
+      <div class="video-card">
+        <video src="Press/Olivia_Personal_Curriculum.mp4" preload="metadata" muted playsinline></video>
+        <div class="video-card-info">
+          <div><div class="video-card-name">Personal Curriculum</div><div class="video-card-type">MP4</div></div>
+          <a class="dl-btn on-dark" href="Press/Olivia_Personal_Curriculum.mp4" download>↓</a>
+        </div>
+      </div>
+      <div class="video-card">
+        <video src="Press/Olivia_Clip_1.mp4" preload="metadata" muted playsinline></video>
+        <div class="video-card-info">
+          <div><div class="video-card-name">Olivia Clip 1</div><div class="video-card-type">MP4</div></div>
+          <a class="dl-btn on-dark" href="Press/Olivia_Clip_1.mp4" download>↓</a>
+        </div>
+      </div>
+      <div class="video-card">
+        <video src="Press/Olivia_Clip_2.mp4" preload="metadata" muted playsinline></video>
+        <div class="video-card-info">
+          <div><div class="video-card-name">Olivia Clip 2</div><div class="video-card-type">MP4</div></div>
+          <a class="dl-btn on-dark" href="Press/Olivia_Clip_2.mp4" download>↓</a>
+        </div>
+      </div>
+      <div class="video-card">
+        <video src="Press/Olivia_Clip_3.mp4" preload="metadata" muted playsinline></video>
+        <div class="video-card-info">
+          <div><div class="video-card-name">Olivia Clip 3</div><div class="video-card-type">MP4</div></div>
+          <a class="dl-btn on-dark" href="Press/Olivia_Clip_3.mp4" download>↓</a>
+        </div>
+      </div>
+      <div class="video-card">
+        <video src="Press/Olivia_Clip_4.mp4" preload="metadata" muted playsinline></video>
+        <div class="video-card-info">
+          <div><div class="video-card-name">Olivia Clip 4</div><div class="video-card-type">MP4</div></div>
+          <a class="dl-btn on-dark" href="Press/Olivia_Clip_4.mp4" download>↓</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Press Releases -->
+  <div class="press-subsection">
+    <div class="press-sub-title">Press Releases</div>
+    <div class="press-release-list">
+      <div class="press-release-item">
+        <div>
+          <div class="press-release-title">Opal Launches Opal for Schools</div>
+          <div class="press-release-date">October 2022</div>
+        </div>
+        <a class="press-release-link" href="https://www.opal.so/blog" target="_blank">Read →</a>
+      </div>
+      <div class="press-release-item">
+        <div>
+          <div class="press-release-title">Opal Wins Apple Design Award</div>
+          <div class="press-release-date">June 2022</div>
+        </div>
+        <a class="press-release-link" href="https://www.opal.so/blog" target="_blank">Read →</a>
+      </div>
+      <div class="press-release-item">
+        <div>
+          <div class="press-release-title">Opal Raises $4.3M Seed Round</div>
+          <div class="press-release-date">December 2021</div>
+        </div>
+        <a class="press-release-link" href="https://www.opal.so/blog" target="_blank">Read →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="press-contact-bar">
+    <p>Press inquiries — <a class="contact-link" href="mailto:kenneth@opal.so">kenneth@opal.so</a></p>
+    <a class="dl-btn on-dark" href="mailto:kenneth@opal.so" style="padding:8px 18px;font-size:12px;">Contact Press →</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DOWNLOADS -->
 <section id="download">
-  <div class="section-label">09 — Download</div>
+  <div class="section-label">10 — Download</div>
   <h2>All Assets</h2>
   <p class="section-desc">Tap a category to expand, then download individual files.</p>
 
   <div class="dl-section open">
     <div class="dl-header" onclick="this.parentElement.classList.toggle('open')">
       <div class="dl-header-left"><span class="dl-header-title">Logos & Crests</span><span class="dl-header-count">4 files</span></div>
-      <span class="dl-header-arrow">▾</span>
+      <span class="dl-header-arrow">&#9662;</span>
     </div>
     <div class="dl-body">
       <div class="download-grid">
@@ -700,7 +981,7 @@
   <div class="dl-section">
     <div class="dl-header" onclick="this.parentElement.classList.toggle('open')">
       <div class="dl-header-left"><span class="dl-header-title">App Icon & Imagery</span><span class="dl-header-count">3 files</span></div>
-      <span class="dl-header-arrow">▾</span>
+      <span class="dl-header-arrow">&#9662;</span>
     </div>
     <div class="dl-body">
       <div class="download-grid">
@@ -714,7 +995,7 @@
   <div class="dl-section">
     <div class="dl-header" onclick="this.parentElement.classList.toggle('open')">
       <div class="dl-header-left"><span class="dl-header-title">Focus Gems</span><span class="dl-header-count">6 files</span></div>
-      <span class="dl-header-arrow">▾</span>
+      <span class="dl-header-arrow">&#9662;</span>
     </div>
     <div class="dl-body">
       <div class="download-grid">
@@ -731,7 +1012,7 @@
   <div class="dl-section">
     <div class="dl-header" onclick="this.parentElement.classList.toggle('open')">
       <div class="dl-header-left"><span class="dl-header-title">Badges</span><span class="dl-header-count">2 files</span></div>
-      <span class="dl-header-arrow">▾</span>
+      <span class="dl-header-arrow">&#9662;</span>
     </div>
     <div class="dl-body">
       <div class="download-grid">
@@ -744,7 +1025,7 @@
   <div class="dl-section">
     <div class="dl-header" onclick="this.parentElement.classList.toggle('open')">
       <div class="dl-header-left"><span class="dl-header-title">Screenshots</span><span class="dl-header-count">12 files</span></div>
-      <span class="dl-header-arrow">▾</span>
+      <span class="dl-header-arrow">&#9662;</span>
     </div>
     <div class="dl-body">
       <div class="download-grid">
@@ -766,14 +1047,67 @@
 
   <div class="dl-section">
     <div class="dl-header" onclick="this.parentElement.classList.toggle('open')">
-      <div class="dl-header-left"><span class="dl-header-title">Fonts</span><span class="dl-header-count">3 files</span></div>
-      <span class="dl-header-arrow">▾</span>
+      <div class="dl-header-left"><span class="dl-header-title">App Videos</span><span class="dl-header-count">5 files</span></div>
+      <span class="dl-header-arrow">&#9662;</span>
+    </div>
+    <div class="dl-body">
+      <div class="download-grid">
+        <a class="download-item" href="Videos/Opal_Homepage.mp4" download><div><div class="download-label">Opal Homepage</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Videos/Opal_Block_Screens.mov" download><div><div class="download-label">Block Screens</div><div class="download-type">MOV</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Videos/Opal_For_Schools.mp4" download><div><div class="download-label">Opal for Schools</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Videos/Opal_Friends.mp4" download><div><div class="download-label">Opal Friends</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Videos/Opal_Widget.mp4" download><div><div class="download-label">Opal Widget</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="dl-section">
+    <div class="dl-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dl-header-left"><span class="dl-header-title">Kenneth — Headshots</span><span class="dl-header-count">7 files</span></div>
+      <span class="dl-header-arrow">&#9662;</span>
+    </div>
+    <div class="dl-body">
+      <div class="download-grid">
+        <a class="download-item" href="Press/Kenneth_1.jpg" download><div><div class="download-label">Kenneth 1</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Kenneth_2.jpg" download><div><div class="download-label">Kenneth 2</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Kenneth_3.jpg" download><div><div class="download-label">Kenneth 3</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Kenneth_4.jpg" download><div><div class="download-label">Kenneth 4</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Kenneth_5.jpg" download><div><div class="download-label">Kenneth 5</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Kenneth_6.jpg" download><div><div class="download-label">Kenneth 6</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Kenneth_7.jpg" download><div><div class="download-label">Kenneth 7</div><div class="download-type">JPG</div></div><span class="download-arrow">↓</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="dl-section">
+    <div class="dl-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dl-header-left"><span class="dl-header-title">Olivia Unplugged</span><span class="dl-header-count">6 files</span></div>
+      <span class="dl-header-arrow">&#9662;</span>
+    </div>
+    <div class="dl-body">
+      <div class="download-grid">
+        <a class="download-item" href="Press/Olivia_Life_Interesting.mp4" download><div><div class="download-label">Make Your Life Interesting Again</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Olivia_Personal_Curriculum.mp4" download><div><div class="download-label">Personal Curriculum</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Olivia_Clip_1.mp4" download><div><div class="download-label">Olivia Clip 1</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Olivia_Clip_2.mp4" download><div><div class="download-label">Olivia Clip 2</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Olivia_Clip_3.mp4" download><div><div class="download-label">Olivia Clip 3</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="Press/Olivia_Clip_4.mp4" download><div><div class="download-label">Olivia Clip 4</div><div class="download-type">MP4</div></div><span class="download-arrow">↓</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="dl-section">
+    <div class="dl-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dl-header-left"><span class="dl-header-title">Fonts</span><span class="dl-header-count">5 files</span></div>
+      <span class="dl-header-arrow">&#9662;</span>
     </div>
     <div class="dl-body">
       <div class="download-grid">
         <a class="download-item" href="SF-Pro-Text-Bold.otf" download><div><div class="download-label">SF Pro Text Bold</div><div class="download-type">OTF</div></div><span class="download-arrow">↓</span></a>
         <a class="download-item" href="SF-Pro-Text-Semibold.otf" download><div><div class="download-label">SF Pro Text Semibold</div><div class="download-type">OTF</div></div><span class="download-arrow">↓</span></a>
         <a class="download-item" href="SF-Pro-Text-Medium.otf" download><div><div class="download-label">SF Pro Text Medium</div><div class="download-type">OTF</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="SF-Pro-Text-Regular.otf" download><div><div class="download-label">SF Pro Text Regular</div><div class="download-type">OTF</div></div><span class="download-arrow">↓</span></a>
+        <a class="download-item" href="SF-Pro-Text-Light.otf" download><div><div class="download-label">SF Pro Text Light</div><div class="download-type">OTF</div></div><span class="download-arrow">↓</span></a>
       </div>
     </div>
   </div>
@@ -781,14 +1115,15 @@
 
 <div class="divider"></div>
 
-<!-- ════════════ CONTACT ════════════ -->
+<!-- CONTACT -->
 <section id="contact" style="padding-bottom:60px;">
-  <div class="section-label">10 — Contact</div>
+  <div class="section-label">11 — Contact</div>
   <h2>Questions?</h2>
   <div class="contact-card">
     <div>
       <p style="font-size:14px;color:var(--secondary);max-width:420px;line-height:1.7;">Need a custom asset or have a use case not covered here? Reach out before publishing.</p>
-      <div style="margin-top:16px;font-size:12px;color:var(--dim);">Contact: <a href="mailto:nour@opal.so" style="color:white;text-decoration:none;">nour@opal.so</a></div>
+      <div style="margin-top:16px;font-size:12px;color:var(--dim);">Brand: <a href="mailto:nour@opal.so" style="color:white;text-decoration:none;">nour@opal.so</a></div>
+      <div style="margin-top:4px;font-size:12px;color:var(--dim);">Press: <a href="mailto:kenneth@opal.so" style="color:white;text-decoration:none;">kenneth@opal.so</a></div>
       <div style="margin-top:4px;font-size:12px;color:var(--dim);">Website: <a href="https://www.opal.so" target="_blank" style="color:white;text-decoration:none;">opal.so</a></div>
     </div>
     <a href="mailto:nour@opal.so" class="contact-btn">Reach out →</a>
@@ -798,10 +1133,17 @@
 <footer>© Opal — The Focus Company</footer>
 
 <script>
+// Play video on hover
+document.querySelectorAll('.video-card').forEach(card => {
+  const video = card.querySelector('video');
+  if (!video) return;
+  card.addEventListener('mouseenter', () => { video.play().catch(() => {}); });
+  card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+});
+
 // Active pill on scroll
 const pills = document.querySelectorAll('.nav-bar a');
 const sections = document.querySelectorAll('section[id]');
-const navPills = document.getElementById('navPills');
 
 function updateActive() {
   let current = '';
@@ -809,6 +1151,9 @@ function updateActive() {
     if (window.scrollY >= s.offsetTop - 80) current = s.id;
   });
   pills.forEach(p => {
+    const match = p.getAttribute('data-section') === current ||
+      (current === 'hero' && !p.getAttribute('data-section')) ||
+      (current === 'app-icon' && p.getAttribute('data-section') === 'logos');
     p.classList.toggle('active', p.getAttribute('data-section') === current);
     if (p.classList.contains('active')) {
       p.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
