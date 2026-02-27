@@ -32,37 +32,39 @@
   /* ── Nav ── */
   nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(0,0,0,0.85);
-    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-inner {
-    max-width: 1100px; margin: 0 auto;
-    padding: 0 48px;
-    display: flex; align-items: center;
-    height: 52px; gap: 32px;
+    padding: 12px 48px;
+    display: flex; align-items: center; justify-content: center;
+    gap: 20px;
   }
   .nav-logo { flex-shrink: 0; }
-  .nav-logo img { height: 14px; width: auto; display: block; opacity: 0.7; }
-  .nav-pills {
-    display: flex; gap: 4px; list-style: none;
+  .nav-logo img { height: 18px; width: auto; display: block; }
+  .nav-pill-container {
+    display: flex; align-items: center; gap: 2px;
+    list-style: none;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 100px;
+    padding: 4px;
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
     overflow-x: auto; -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; flex: 1;
+    scrollbar-width: none;
   }
-  .nav-pills::-webkit-scrollbar { display: none; }
-  .nav-pills a {
+  .nav-pill-container::-webkit-scrollbar { display: none; }
+  .nav-pill-container a {
     display: block;
     color: var(--dim); text-decoration: none;
     font-size: 12px; font-weight: 600;
-    padding: 6px 14px;
+    padding: 7px 16px;
     border-radius: 100px;
     white-space: nowrap;
-    transition: color 0.2s, background 0.2s;
+    transition: color 0.25s, background 0.25s;
   }
-  .nav-pills a:hover,
-  .nav-pills a.active {
+  .nav-pill-container a:hover {
     color: var(--white);
-    background: rgba(255,255,255,0.08);
+  }
+  .nav-pill-container a.active {
+    color: var(--white);
+    background: rgba(255,255,255,0.1);
   }
 
   /* ── Sections ── */
@@ -390,7 +392,7 @@
   /* ── Responsive ── */
   @media (max-width: 768px) {
     section { padding: 56px 24px; }
-    .nav-inner { padding: 0 20px; gap: 16px; }
+    nav { padding: 10px 20px; gap: 12px; }
     .divider { margin-left: 24px; margin-right: 24px; }
     .logo-grid, .crest-grid, .rules-grid, .hero-assets-grid { grid-template-columns: 1fr; }
     .gems-grid { grid-template-columns: repeat(2, 1fr); }
@@ -407,19 +409,17 @@
 
 <!-- ════════════ NAV ════════════ -->
 <nav>
-  <div class="nav-inner">
-    <div class="nav-logo"><img src="Opal_White.png" alt="Opal"></div>
-    <ul class="nav-pills" id="navPills">
-      <li><a href="#colors" data-section="colors">Colors</a></li>
-      <li><a href="#typography" data-section="typography">Type</a></li>
-      <li><a href="#logos" data-section="logos">Logos</a></li>
-      <li><a href="#gems" data-section="gems">Gems</a></li>
-      <li><a href="#screenshots" data-section="screenshots">Screenshots</a></li>
-      <li><a href="#assets" data-section="assets">Assets</a></li>
-      <li><a href="#rules" data-section="rules">Rules</a></li>
-      <li><a href="#download" data-section="download">Download</a></li>
-    </ul>
-  </div>
+  <div class="nav-logo"><img src="Opal_White.png" alt="Opal"></div>
+  <ul class="nav-pill-container" id="navPills">
+    <li><a href="#colors" data-section="colors">Colors</a></li>
+    <li><a href="#typography" data-section="typography">Type</a></li>
+    <li><a href="#logos" data-section="logos">Logos</a></li>
+    <li><a href="#gems" data-section="gems">Gems</a></li>
+    <li><a href="#screenshots" data-section="screenshots">Screenshots</a></li>
+    <li><a href="#assets" data-section="assets">Assets</a></li>
+    <li><a href="#rules" data-section="rules">Rules</a></li>
+    <li><a href="#download" data-section="download">Download</a></li>
+  </ul>
 </nav>
 
 <!-- ════════════ HERO ════════════ -->
@@ -794,7 +794,7 @@
 
 <script>
 // Active pill on scroll
-const pills = document.querySelectorAll('.nav-pills a');
+const pills = document.querySelectorAll('.nav-pill-container a');
 const sections = document.querySelectorAll('section[id]');
 const navPills = document.getElementById('navPills');
 
