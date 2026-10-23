@@ -181,16 +181,17 @@
   .font-downloads { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 30px; }
   .font-dl {
     display: inline-flex; align-items: center; gap: 6px;
-    padding: 10px 16px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    padding: 10px 18px;
+    background: rgba(255,255,255,0.02);
+    outline: 1px solid rgba(255,255,255,0.15); outline-offset: 0;
+    border-radius: 999px;
     text-decoration: none;
-    color: var(--secondary);
-    font-size: 12px; font-weight: 600;
-    transition: border-color 0.2s, color 0.2s;
+    color: var(--white);
+    font-size: 13px; font-weight: 600;
+    transition: background-color 0.3s ease, outline-color 0.3s ease;
   }
-  .font-dl:hover { border-color: var(--border-hover); color: var(--white); }
-  .font-dl .meta { color: var(--dim); font-weight: 400; }
+  .font-dl:hover { background: rgba(255,255,255,0.08); outline-color: rgba(255,255,255,0.3); }
+  .font-dl .meta { color: var(--secondary); font-weight: 400; }
 
   /* ── Logo Cards ── */
   .logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
@@ -228,25 +229,18 @@
 
   /* ── DL button ── */
   .dl-btn {
-    display: inline-flex; align-items: center; gap: 5px;
-    padding: 6px 14px;
-    border-radius: 100px;
-    font-size: 11px; font-weight: 600;
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 12px; font-weight: 600; line-height: 1.3;
     text-decoration: none;
-    transition: all 0.2s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .dl-btn.on-dark {
-    background: rgba(255,255,255,0.06);
-    color: rgba(255,255,255,0.4);
-    border: 1px solid rgba(255,255,255,0.08);
-  }
-  .dl-btn.on-dark:hover { background: rgba(255,255,255,0.12); color: #fff; }
-  .dl-btn.on-light {
-    background: rgba(0,0,0,0.04);
-    color: rgba(0,0,0,0.35);
-    border: 1px solid rgba(0,0,0,0.08);
-  }
-  .dl-btn.on-light:hover { background: rgba(0,0,0,0.1); color: #000; }
+  .dl-btn.on-dark { background: #fff; color: #0f0f0f; }
+  .dl-btn.on-dark:hover { transform: scale(1.05); box-shadow: 0 0 20px 7.5px rgba(255,255,255,0.1); }
+  .dl-btn.on-light { background: #0f0f0f; color: #fff; }
+  .dl-btn.cc-lg { padding: 10px 18px; font-size: 14px; }
+  .dl-btn.on-light:hover { transform: scale(1.05); box-shadow: 0 0 20px 7.5px rgba(0,0,0,0.12); }
 
   /* ── App Icon ── */
   .app-icon-row { display: flex; align-items: center; gap: 36px; }
@@ -397,16 +391,16 @@
   .press-cta-btn {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 12px 24px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 100px;
+    background: rgba(255,255,255,0.02);
+    outline: 1px solid rgba(255,255,255,0.15); outline-offset: 0;
+    border-radius: 999px;
     color: var(--white);
     text-decoration: none;
-    font-size: 13px; font-weight: 600;
-    transition: background 0.2s, border-color 0.2s;
+    font-size: 14px; font-weight: 600;
     flex-shrink: 0; margin-left: 32px;
+    transition: background-color 0.3s ease, outline-color 0.3s ease;
   }
-  .press-cta-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
+  .press-cta-btn:hover { background: rgba(255,255,255,0.08); outline-color: rgba(255,255,255,0.3); }
 
   /* ── Downloads Accordion ── */
   .dl-section { border-bottom: 1px solid var(--border); }
@@ -453,14 +447,15 @@
     display: flex; justify-content: space-between; align-items: center;
   }
   .contact-btn {
-    background: white; color: black;
-    padding: 12px 26px; border-radius: 100px;
+    display: inline-flex; align-items: center;
+    background: #fff; color: #0f0f0f;
+    padding: 12px 24px; border-radius: 999px;
     text-decoration: none;
-    font-size: 13px; font-weight: 700;
+    font-size: 14px; font-weight: 600;
     flex-shrink: 0; margin-left: 32px;
-    transition: opacity 0.2s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .contact-btn:hover { opacity: 0.85; }
+  .contact-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px 7.5px rgba(255,255,255,0.1); }
 
   footer {
     text-align: center; padding: 44px;
@@ -664,7 +659,7 @@
     <div class="app-icon-details">
       <h3>Opal App Icon</h3>
       <p>Display at its original rounded-square shape. Do not place inside another container or add shadows.</p>
-      <a class="dl-btn on-dark" href="App_Icon.png" download>↓ Download PNG</a>
+      <a class="dl-btn on-dark cc-lg" href="App_Icon.png" download>↓ Download PNG</a>
     </div>
   </div>
 </section>
