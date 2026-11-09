@@ -339,6 +339,7 @@
     .press-mention-grid { grid-template-columns: 1fr; }
     .press-mention { padding: 22px; }
   }
+  a[download][aria-busy] { opacity: 0.5; pointer-events: none; }
 </style>
 </head>
 <body>
@@ -632,6 +633,32 @@ pills.forEach(p => {
     }
   });
 });
+
+// Chrome can stall link downloads at "Starting..." with 0 bytes, so fetch the
+// file ourselves and save it from memory. Capture phase runs before the inline
+// stopPropagation on the video download buttons.
+document.addEventListener('click', async (event) => {
+  const link = event.target.closest('a[download]');
+  if (!link || link.href.startsWith('blob:') || link.getAttribute('aria-busy')) return;
+  event.preventDefault();
+  link.setAttribute('aria-busy', 'true');
+  try {
+    const response = await fetch(link.href);
+    if (!response.ok) throw new Error(response.status);
+    const blobUrl = URL.createObjectURL(await response.blob());
+    const save = document.createElement('a');
+    save.href = blobUrl;
+    save.download = link.getAttribute('download') || decodeURIComponent(new URL(link.href).pathname.split('/').pop());
+    document.body.appendChild(save);
+    save.click();
+    save.remove();
+    setTimeout(() => URL.revokeObjectURL(blobUrl), 60000);
+  } catch (error) {
+    window.location.href = link.href;
+  } finally {
+    link.removeAttribute('aria-busy');
+  }
+}, true);
 </script>
 
 </body>
