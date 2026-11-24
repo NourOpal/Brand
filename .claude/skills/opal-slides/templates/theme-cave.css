@@ -1,0 +1,9 @@
+/* Cave theme (opalapp.com look). Append to deck.css for a Cave deck; remove to go back to Glow. */
+section { background: #040404; }
+.bleed.glow { display: none; }
+.title, .display { background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 45%, #BCBBC0 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+:root { --accent: #FFFFFF; }
+.mx .on, .statcell.hi { background: rgba(255,255,255,0.06); }
+.hero { position: absolute; left: 260px; top: 395px; width: 1400px; display: flex; flex-direction: column; align-items: center; gap: 30px; text-align: center; }
+.hero .display { margin-left: 0; font-size: 120px; line-height: 1.02; }
+.hero .lede { width: 840px; font-size: 32px; color: rgba(255,255,255,0.82); }
